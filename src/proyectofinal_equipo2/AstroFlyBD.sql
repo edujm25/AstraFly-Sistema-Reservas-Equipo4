@@ -10,4 +10,4 @@ CREATE TABLE usuarios (
     numero_telefonico INT (11) NOT NULL UNIQUE,
     contrasena VARCHAR(255) NOT NULL
 );
-DROP TABLE usuarios;
+
