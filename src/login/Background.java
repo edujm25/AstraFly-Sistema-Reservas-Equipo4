@@ -26,12 +26,14 @@ import shadow.ShadowRenderer;
  */
 public class Background extends JComponent {
 
-    public Component getBlur() {
-        return blur;
+    public java.util.List<Component> getBlur() {
+        return blurTargets;
     }
 
     public void setBlur(Component blur) {
-        this.blur = blur;
+        if (blur != null && !blurTargets.contains(blur)) {
+            blurTargets.add(blur);
+        }
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
@@ -41,12 +43,32 @@ public class Background extends JComponent {
         });
     }
 
+    public void clearBlur() {
+        blurTargets.clear();
+        createImage();
+        repaint();
+    }
+
     private Icon image;
     private BufferedImage bufferedImage;
-    private Component blur;
+    private final java.util.List<Component> blurTargets = new java.util.ArrayList<>();
+
+    private double getScaleFactor() {
+        java.awt.GraphicsConfiguration gc = getGraphicsConfiguration();
+        if (gc != null) {
+            return gc.getDefaultTransform().getScaleX();
+        }
+        return 1.0;
+    }
 
     public Background() {
         image = new ImageIcon(getClass().getResource("/vista/imagenes/AFImgLogin.png"));
+    }
+
+    public void setImage(String path) {
+        image = new ImageIcon(getClass().getResource(path));
+        createImage();
+        repaint();
     }
 
     private void createImage() {
@@ -54,25 +76,32 @@ public class Background extends JComponent {
             int width = getWidth();
             int height = getHeight();
             if (width > 0 && height > 0) {
-                bufferedImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
+                double scale = getScaleFactor();
+                int realWidth = (int) Math.ceil(width * scale);
+                int realHeight = (int) Math.ceil(height * scale);
+                bufferedImage = new BufferedImage(realWidth, realHeight, BufferedImage.TYPE_INT_ARGB);
                 Graphics2D g2 = bufferedImage.createGraphics();
-                g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-                Rectangle rec = getAutoSize(image);
+                g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BICUBIC);
+                g2.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
+                g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+                Rectangle rec = getAutoSize(image, realWidth, realHeight);
                 g2.drawImage(((ImageIcon) image).getImage(), rec.x, rec.y, rec.width, rec.height, null);
-                if (blur != null) {
-                    createBlurImage(g2);
+                if (!blurTargets.isEmpty()) {
+                    for (Component blur : blurTargets) {
+                        createBlurImage(g2, scale, blur);
+                    }
                 }
                 g2.dispose();
             }
         }
     }
 
-    private void createBlurImage(Graphics2D g) {
-        int x = blur.getX();
-        int y = blur.getY();
-        int width = blur.getWidth();
-        int height = blur.getHeight();
-        int shadow = 8;
+    private void createBlurImage(Graphics2D g, double scale, Component blur) {
+        int x = (int) (blur.getX() * scale);
+        int y = (int) (blur.getY() * scale);
+        int width = (int) (blur.getWidth() * scale);
+        int height = (int) (blur.getHeight() * scale);
+        int shadow = (int) (8 * scale);
         if (width > 0 && height > 0) {
             BufferedImage img = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
             Graphics2D g2 = img.createGraphics();
@@ -93,14 +122,19 @@ public class Background extends JComponent {
     @Override
     protected void paintComponent(Graphics grphcs) {
         if (bufferedImage != null) {
-            BufferedImage img = new BufferedImage(getWidth(), getHeight(), BufferedImage.TYPE_INT_ARGB);
+            int bw = bufferedImage.getWidth();
+            int bh = bufferedImage.getHeight();
+            BufferedImage img = new BufferedImage(bw, bh, BufferedImage.TYPE_INT_ARGB);
             Graphics2D g2 = img.createGraphics();
             g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-            g2.fill(new RoundRectangle2D.Double(0, 0, getWidth(), getHeight(), 20, 20));
+            double scale = getScaleFactor();
+            g2.fill(new RoundRectangle2D.Double(0, 0, bw, bh, 20 * scale, 20 * scale));
             g2.setComposite(AlphaComposite.SrcIn);
             g2.drawImage(bufferedImage, 0, 0, null);
             g2.dispose();
-            grphcs.drawImage(img, 0, 0, null);
+            Graphics2D g2d = (Graphics2D) grphcs;
+            g2d.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BICUBIC);
+            g2d.drawImage(img, 0, 0, getWidth(), getHeight(), null);
         }
         super.paintComponent(grphcs);
     }
@@ -117,9 +151,7 @@ public class Background extends JComponent {
         });
     }
 
-    private Rectangle getAutoSize(Icon image) {
-        int w = getWidth();
-        int h = getHeight();
+    private Rectangle getAutoSize(Icon image, int w, int h) {
         int iw = image.getIconWidth();
         int ih = image.getIconHeight();
         double xScale = (double) w / iw;
