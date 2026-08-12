@@ -63,7 +63,6 @@ public class Login extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        background.setBlur(jPanel1);
         background.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setOpaque(false);
@@ -95,6 +94,11 @@ public class Login extends javax.swing.JFrame {
         button1.setForeground(new java.awt.Color(255, 255, 255));
         button1.setText("Iniciar Sesión");
         button1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        button1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button1ActionPerformed(evt);
+            }
+        });
         jPanel1.add(button1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 330, 200, 40));
 
         jLabel6.setForeground(new java.awt.Color(170, 184, 191));
@@ -134,6 +138,10 @@ public class Login extends javax.swing.JFrame {
     private void textField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_textField1ActionPerformed
+
+    private void button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_button1ActionPerformed
 
     /**
      * @param args the command line arguments
