@@ -3,11 +3,17 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/Edwis%20Jimenez/Documents/NetBeansProjects/ProyectoFinal_Equipo2/src/vista/Menu.java</file>
             <file>file:/C:/Users/Edwis%20Jimenez/Documents/NetBeansProjects/ProyectoFinal_Equipo2/src/login/Background.java</file>
             <file>file:/C:/Users/Edwis%20Jimenez/Documents/NetBeansProjects/ProyectoFinal_Equipo2/src/vista/Login.java</file>
             <file>file:/C:/Users/Edwis%20Jimenez/Documents/NetBeansProjects/ProyectoFinal_Equipo2/src/proyectofinal_equipo2/AstroFlyBD.sql</file>
             <file>file:/C:/Users/Edwis%20Jimenez/Documents/NetBeansProjects/ProyectoFinal_Equipo2/src/modelo/Vuelo.java</file>
+=======
+            <file>file:/C:/Users/shing/OneDrive/Documentos/NetBeansProjects/ProyectoFinal-Equipo2_Programacion1/src/Controladores/ControlLogin.java</file>
+            <file>file:/C:/Users/shing/OneDrive/Documentos/NetBeansProjects/ProyectoFinal-Equipo2_Programacion1/src/Modelos/UserDAO.java</file>
+            <file>file:/C:/Users/shing/OneDrive/Documentos/NetBeansProjects/ProyectoFinal-Equipo2_Programacion1/src/proyectofinal_equipo2/BaseDeDatos/ConexionDB.java</file>
+>>>>>>> 64d7a7f1d7f4e609e19a38c5e4cc4d662cba9539
         </group>
     </open-files>
 </project-private>
