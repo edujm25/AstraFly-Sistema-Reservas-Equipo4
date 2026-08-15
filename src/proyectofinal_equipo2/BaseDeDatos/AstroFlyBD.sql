@@ -20,14 +20,9 @@ CREATE TABLE Vuelos (
     aerolinea VARCHAR(50) NOT NULL,
     origen VARCHAR(100) NOT NULL,
     destino VARCHAR(100) NOT NULL,
-    fecha_salida DATETIME NOT NULL,
-    fecha_llegada DATETIME NOT NULL,
-    asientos_totales INT NOT NULL,
-    asientos_disponibles INT NOT NULL,
-    precio DECIMAL(10,2) NOT NULL,
-    estado ENUM('programado', 'retrasado', 'cancelado', 'completado') DEFAULT 'programado',
-    
-    UNIQUE KEY uq_numero_fecha (numero_vuelo, fecha_salida)
+    fecha DATE NOT NULL,
+    hora TIME NOT NULL,
+    precio DECIMAL(10,2) NOT NULL
 );
 
 CREATE TABLE VueloReservas (

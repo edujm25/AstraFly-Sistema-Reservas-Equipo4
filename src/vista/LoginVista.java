@@ -1,17 +1,20 @@
 package vista;
 
 import java.awt.Color;
+import swing.Button;
+import swing.TextField;
+import swing.PasswordField;
 
 /**
  *
  * @author RAVEN
  */
-public class Login extends javax.swing.JFrame {
+public class LoginVista extends javax.swing.JFrame {
 
     /**
      * Creates new form Login
      */
-    public Login() {
+    public LoginVista() {
         initComponents();
         this.setLocationRelativeTo(null);
         background.setBlur(jPanel1);
@@ -33,6 +36,18 @@ public class Login extends javax.swing.JFrame {
 
         centrarPanel();
     }
+    
+    public Button getBtnIngresar() {
+        return btnIngresar;
+    }
+    
+    public TextField getTxtUsuario() {
+        return txtUsuario;
+    }
+    
+    public PasswordField getTxtContrasena() {
+        return txtContrasena;
+    }
 
     private void centrarPanel() {
         int x = (background.getWidth() - jPanel1.getWidth()) / 2;
@@ -53,14 +68,15 @@ public class Login extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        textField1 = new swing.TextField();
-        passwordField1 = new swing.PasswordField();
-        button1 = new swing.Button();
+        txtUsuario = new swing.TextField();
+        txtContrasena = new swing.PasswordField();
+        btnIngresar = new swing.Button();
         jLabel6 = new javax.swing.JLabel();
         sVGImageLock = new swing.SVGImage();
         sVGAstraFlyIcon = new swing.SVGImage();
         sVGImageUser = new swing.SVGImage();
         jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -80,27 +96,27 @@ public class Login extends javax.swing.JFrame {
         jLabel2.setText("Inicia sesión para continuar");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 160, -1, -1));
 
-        textField1.setHint("Usuario");
-        textField1.addActionListener(new java.awt.event.ActionListener() {
+        txtUsuario.setHint("Usuario");
+        txtUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textField1ActionPerformed(evt);
+                txtUsuarioActionPerformed(evt);
             }
         });
-        jPanel1.add(textField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 200, 240, -1));
+        jPanel1.add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 200, 240, -1));
 
-        passwordField1.setHint("Contraseña");
-        jPanel1.add(passwordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 260, 240, -1));
+        txtContrasena.setHint("Contraseña");
+        jPanel1.add(txtContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 260, 240, -1));
 
-        button1.setBackground(new java.awt.Color(4, 103, 232));
-        button1.setForeground(new java.awt.Color(255, 255, 255));
-        button1.setText("Iniciar Sesión");
-        button1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        button1.addActionListener(new java.awt.event.ActionListener() {
+        btnIngresar.setBackground(new java.awt.Color(4, 103, 232));
+        btnIngresar.setForeground(new java.awt.Color(255, 255, 255));
+        btnIngresar.setText("Iniciar Sesión");
+        btnIngresar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnIngresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                button1ActionPerformed(evt);
+                btnIngresarActionPerformed(evt);
             }
         });
-        jPanel1.add(button1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 330, 200, 40));
+        jPanel1.add(btnIngresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 330, 200, 40));
 
         jLabel6.setForeground(new java.awt.Color(170, 184, 191));
         jLabel6.setText("¿No tienes cuenta? Contacta con el administrador");
@@ -113,6 +129,10 @@ public class Login extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("AstraFly");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 70, 110, 50));
+
+        jLabel4.setForeground(new java.awt.Color(255, 51, 51));
+        jLabel4.setText("Usuario y/o Contraseña incorrectos, intente nuevamente.");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, -1, -1));
 
         background.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 50, 330, 420));
 
@@ -136,13 +156,13 @@ public class Login extends javax.swing.JFrame {
         //String pass = String.valueOf(txtPassword.getPassword());
     }//GEN-LAST:event_cmdLoginActionPerformed
 
-    private void textField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textField1ActionPerformed
+    private void txtUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsuarioActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_textField1ActionPerformed
+    }//GEN-LAST:event_txtUsuarioActionPerformed
 
-    private void button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button1ActionPerformed
+    private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_button1ActionPerformed
+    }//GEN-LAST:event_btnIngresarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -161,36 +181,38 @@ public class Login extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoginVista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoginVista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoginVista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoginVista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Login().setVisible(true);
+                new LoginVista().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private login.Background background;
-    private swing.Button button1;
+    private swing.Button btnIngresar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
-    private swing.PasswordField passwordField1;
     private swing.SVGImage sVGAstraFlyIcon;
     private swing.SVGImage sVGImageLock;
     private swing.SVGImage sVGImageUser;
-    private swing.TextField textField1;
+    private swing.PasswordField txtContrasena;
+    private swing.TextField txtUsuario;
     // End of variables declaration//GEN-END:variables
 }
