@@ -12,14 +12,26 @@ public class Menu extends javax.swing.JFrame {
      * Creates new form Menu
      */
     public Menu() {
+        //Se inicializan los componentes
         initComponents();
-        menuImage.setImage("/vista/imagenes/FImgMenu.png");
-        menuImage.setBlur(vuelosPanel);
-        menuImage.setBlur(reservasPanel);
-        menuImage.setBlur(usuariosPanel);
         
-        //centrar el form
-        this.setLocationRelativeTo(null);
+        //Se agregan los diferentes frames del programa 
+        contentPanel.add(new vista.PanelesAdmin.PanelReservasAdmin(), "Administrar Reservas");
+        contentPanel.add(new vista.PanelesAdmin.PanelUsuariosAdmin(), "Administrar Usuarios");
+        contentPanel.add(new vista.PanelesAdmin.PanelVuelosAdmin(), "Administratr Vuelos");
+        contentPanel.add(new vista.PanelAcercaDe(), "Acerca De");
+
+        
+        inicio.setImage("/vista/imagenes/AdminAFMenuImage.png");//se le asigna una imagen al menu de inicio
+        
+        //Botones cuadrados del menu de inicio
+        inicio.setBlur(vuelosPanel3);
+        inicio.setBlur(reservasPanel3);
+        inicio.setBlur(usuariosPanel5);
+        
+        this.setLocationRelativeTo(null);//centrar el form
+        
+        //Se le asigna imagenes (iconos) a los diferentes labels
         AstraFlyIcon1.setSvgImage("vista/imagenes/AstraFlyIconInSVG(1).svg", 200, 150);
         
         sVGVuelos.setSvgImage("vista/imagenes/airplane-svgrepo-com.svg", 35, 35);
@@ -27,6 +39,11 @@ public class Menu extends javax.swing.JFrame {
         sVGUsuarios.setSvgImage("vista/imagenes/user-pen-alt-1-svgrepo-com.svg", 30, 30);
         sVGAcercaDe.setSvgImage("vista/imagenes/info-svgrepo-com.svg", 30, 30);
         sVGSalir.setSvgImage("vista/imagenes/power-symbol-svgrepo-com.svg", 30, 30);
+        
+        sVGVuelos5.setSvgImage("vista/imagenes/airplane-svgrepo-com.svg", 60, 60);
+        sVGReservas5.setSvgImage("vista/imagenes/calendar-lines-pen-svgrepo-com.svg", 45, 45);
+        sVGUsuarios7.setSvgImage("vista/imagenes/users-svgrepo-com.svg", 70, 70);
+
     }
 
     /**
@@ -53,13 +70,20 @@ public class Menu extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         sVGSalir = new swing.SVGImage();
         jLabel2 = new javax.swing.JLabel();
-        menuImage = new login.Background();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        vuelosPanel = new javax.swing.JPanel();
-        reservasPanel = new javax.swing.JPanel();
-        usuariosPanel = new javax.swing.JPanel();
+        contentPanel = new javax.swing.JPanel();
+        inicio = new login.Background();
+        jLabel25 = new javax.swing.JLabel();
+        jLabel26 = new javax.swing.JLabel();
+        jLabel27 = new javax.swing.JLabel();
+        vuelosPanel3 = new javax.swing.JPanel();
+        jLabel28 = new javax.swing.JLabel();
+        sVGVuelos5 = new swing.SVGImage();
+        reservasPanel3 = new javax.swing.JPanel();
+        sVGReservas5 = new swing.SVGImage();
+        jLabel29 = new javax.swing.JLabel();
+        usuariosPanel5 = new javax.swing.JPanel();
+        jLabel32 = new javax.swing.JLabel();
+        sVGUsuarios7 = new swing.SVGImage();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -161,7 +185,7 @@ public class Menu extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(30, 30, 30)
                         .addComponent(jLabel6)))
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 191, Short.MAX_VALUE))
         );
 
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));
@@ -169,67 +193,80 @@ public class Menu extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Menú Principal");
 
-        menuImage.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        contentPanel.setOpaque(false);
+        contentPanel.setLayout(new java.awt.CardLayout());
 
-        jLabel8.setFont(new java.awt.Font("Segoe UI Semibold", 1, 36)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel8.setText("y reservas fácilmente");
-        menuImage.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, -1, 50));
+        inicio.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel9.setFont(new java.awt.Font("Segoe UI Semibold", 1, 36)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel9.setText("Gestiona tus vuelos");
-        menuImage.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, -1, -1));
+        jLabel25.setFont(new java.awt.Font("Segoe UI Semibold", 1, 36)); // NOI18N
+        jLabel25.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel25.setText("de vuelos y reservas");
+        inicio.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, -1, 50));
 
-        jLabel7.setFont(new java.awt.Font("Segoe UI Semilight", 0, 18)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setText("Todo lo que necesitas en un solo lugar");
-        menuImage.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 280, -1, -1));
+        jLabel26.setFont(new java.awt.Font("Segoe UI Semibold", 1, 36)); // NOI18N
+        jLabel26.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel26.setText("Controla toda la operación");
+        inicio.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, -1, -1));
 
-        vuelosPanel.setOpaque(false);
+        jLabel27.setFont(new java.awt.Font("Segoe UI Semilight", 0, 18)); // NOI18N
+        jLabel27.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel27.setText("Todo lo que necesitas en un solo lugar");
+        inicio.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, -1, -1));
 
-        javax.swing.GroupLayout vuelosPanelLayout = new javax.swing.GroupLayout(vuelosPanel);
-        vuelosPanel.setLayout(vuelosPanelLayout);
-        vuelosPanelLayout.setHorizontalGroup(
-            vuelosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 160, Short.MAX_VALUE)
+        vuelosPanel3.setOpaque(false);
+        vuelosPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel28.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel28.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel28.setText("Administrar Vuelos");
+        vuelosPanel3.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, -1, 30));
+        vuelosPanel3.add(sVGVuelos5, new org.netbeans.lib.awtextra.AbsoluteConstraints(48, 15, 60, 60));
+
+        inicio.add(vuelosPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 390, 160, 120));
+
+        reservasPanel3.setOpaque(false);
+        reservasPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        reservasPanel3.add(sVGReservas5, new org.netbeans.lib.awtextra.AbsoluteConstraints(58, 12, 60, 60));
+
+        jLabel29.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel29.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel29.setText("Administrar Reservas");
+        reservasPanel3.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(11, 70, 140, 30));
+
+        inicio.add(reservasPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 390, 160, 120));
+
+        usuariosPanel5.setOpaque(false);
+
+        jLabel32.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel32.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel32.setText("Administrar Usuarios");
+
+        javax.swing.GroupLayout usuariosPanel5Layout = new javax.swing.GroupLayout(usuariosPanel5);
+        usuariosPanel5.setLayout(usuariosPanel5Layout);
+        usuariosPanel5Layout.setHorizontalGroup(
+            usuariosPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(usuariosPanel5Layout.createSequentialGroup()
+                .addGap(45, 45, 45)
+                .addComponent(sVGUsuarios7, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, usuariosPanel5Layout.createSequentialGroup()
+                .addContainerGap(14, Short.MAX_VALUE)
+                .addComponent(jLabel32, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
-        vuelosPanelLayout.setVerticalGroup(
-            vuelosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 120, Short.MAX_VALUE)
+        usuariosPanel5Layout.setVerticalGroup(
+            usuariosPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(usuariosPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(sVGUsuarios7, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel32)
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
-        menuImage.add(vuelosPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 370, 160, 120));
+        inicio.add(usuariosPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 390, -1, -1));
 
-        reservasPanel.setOpaque(false);
-
-        javax.swing.GroupLayout reservasPanelLayout = new javax.swing.GroupLayout(reservasPanel);
-        reservasPanel.setLayout(reservasPanelLayout);
-        reservasPanelLayout.setHorizontalGroup(
-            reservasPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 160, Short.MAX_VALUE)
-        );
-        reservasPanelLayout.setVerticalGroup(
-            reservasPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 120, Short.MAX_VALUE)
-        );
-
-        menuImage.add(reservasPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 370, -1, -1));
-
-        usuariosPanel.setOpaque(false);
-
-        javax.swing.GroupLayout usuariosPanelLayout = new javax.swing.GroupLayout(usuariosPanel);
-        usuariosPanel.setLayout(usuariosPanelLayout);
-        usuariosPanelLayout.setHorizontalGroup(
-            usuariosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 160, Short.MAX_VALUE)
-        );
-        usuariosPanelLayout.setVerticalGroup(
-            usuariosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 120, Short.MAX_VALUE)
-        );
-
-        menuImage.add(usuariosPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 370, -1, -1));
+        contentPanel.add(inicio, "card2");
 
         javax.swing.GroupLayout jPanelLayout = new javax.swing.GroupLayout(jPanel);
         jPanel.setLayout(jPanelLayout);
@@ -237,11 +274,11 @@ public class Menu extends javax.swing.JFrame {
             jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelLayout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2)
-                    .addComponent(menuImage, javax.swing.GroupLayout.PREFERRED_SIZE, 700, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 32, Short.MAX_VALUE))
+                    .addComponent(contentPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 701, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
         jPanelLayout.setVerticalGroup(
             jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -249,9 +286,9 @@ public class Menu extends javax.swing.JFrame {
             .addGroup(jPanelLayout.createSequentialGroup()
                 .addGap(12, 12, 12)
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(menuImage, javax.swing.GroupLayout.PREFERRED_SIZE, 530, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(51, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(contentPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 547, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -295,9 +332,34 @@ public class Menu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private swing.SVGImage AstraFlyIcon1;
+    private javax.swing.JPanel contentPanel;
+    private login.Background inicio;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel30;
+    private javax.swing.JLabel jLabel31;
+    private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -308,13 +370,40 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private login.Background menuImage;
+    private login.Background menuImage1;
+    private login.Background menuImage2;
     private javax.swing.JPanel reservasPanel;
+    private javax.swing.JPanel reservasPanel1;
+    private javax.swing.JPanel reservasPanel2;
+    private javax.swing.JPanel reservasPanel3;
     private swing.SVGImage sVGAcercaDe;
+    private swing.SVGImage sVGReservas2;
+    private swing.SVGImage sVGReservas3;
+    private swing.SVGImage sVGReservas4;
+    private swing.SVGImage sVGReservas5;
     private swing.SVGImage sVGReservasEdit;
     private swing.SVGImage sVGSalir;
     private swing.SVGImage sVGUsuarios;
+    private swing.SVGImage sVGUsuarios2;
+    private swing.SVGImage sVGUsuarios3;
+    private swing.SVGImage sVGUsuarios4;
+    private swing.SVGImage sVGUsuarios5;
+    private swing.SVGImage sVGUsuarios6;
+    private swing.SVGImage sVGUsuarios7;
     private swing.SVGImage sVGVuelos;
+    private swing.SVGImage sVGVuelos2;
+    private swing.SVGImage sVGVuelos3;
+    private swing.SVGImage sVGVuelos4;
+    private swing.SVGImage sVGVuelos5;
     private javax.swing.JPanel usuariosPanel;
+    private javax.swing.JPanel usuariosPanel1;
+    private javax.swing.JPanel usuariosPanel2;
+    private javax.swing.JPanel usuariosPanel3;
+    private javax.swing.JPanel usuariosPanel4;
+    private javax.swing.JPanel usuariosPanel5;
     private javax.swing.JPanel vuelosPanel;
+    private javax.swing.JPanel vuelosPanel1;
+    private javax.swing.JPanel vuelosPanel2;
+    private javax.swing.JPanel vuelosPanel3;
     // End of variables declaration//GEN-END:variables
 }

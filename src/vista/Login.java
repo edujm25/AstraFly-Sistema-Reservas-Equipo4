@@ -14,6 +14,7 @@ public class Login extends javax.swing.JFrame {
     public Login() {
         initComponents();
         this.setLocationRelativeTo(null);
+        background.setBlur(jPanel1);
         System.out.println(getClass().getClassLoader().getResource("vista/imagenes/AstraFlyLogo.svg"));
         sVGImageUser.setSvgImage("vista/imagenes/user-svgrepo-com.svg", 25, 25);
         sVGImageLock.setSvgImage("vista/imagenes/lock-svgrepo-com.svg", 25, 25);
