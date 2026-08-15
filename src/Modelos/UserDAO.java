@@ -22,7 +22,7 @@ public class UserDAO {
         try {
             cn = conectar.conectar();
 
-            String sql = "select * from usuarios where usuario = ? and clave = ?";
+            String sql = "select * from usuarios where nombre_Usuario = ? and contrasena = ?";
 
         
             ps = cn.prepareStatement(sql);
