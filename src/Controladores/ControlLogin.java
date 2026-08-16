@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import Modelos.User;
 import Modelos.UserDAO;
-import vista.LoginVista;
+import vista.Login;
 import vista.Menu;
 
 /**
@@ -17,9 +17,9 @@ public class ControlLogin implements ActionListener {
 
     UserDAO dao = new UserDAO();
     User u = new User();
-    LoginVista loginV;
+    Login loginV;
 
-    public ControlLogin(LoginVista l) {
+    public ControlLogin(Login l) {
         this.loginV = l;
         this.loginV.getBtnIngresar().addActionListener(this);
 
@@ -27,14 +27,14 @@ public class ControlLogin implements ActionListener {
     }
 
     // Metodo que se encarga de limpiar los campos
-    private void limpiarCampos(LoginVista l) {
+    private void limpiarCampos(Login l) {
         l.getTxtUsuario().setText("");
         l.getTxtContrasena().setText("");
         l.getTxtUsuario().requestFocus();
     }
 
     // Metodo para validar que los campos no esten vacios
-    private boolean validarCampos(LoginVista l) {
+    private boolean validarCampos(Login l) {
         if (l.getTxtUsuario().getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(loginV, "El campo de usuario no debe estar vacio!", "Error!", JOptionPane.ERROR_MESSAGE);
             l.getTxtUsuario().requestFocus();
@@ -48,7 +48,7 @@ public class ControlLogin implements ActionListener {
         return true;
     }
 
-    public boolean accionarLogin(String usuario, String clave, LoginVista login) {
+    public boolean accionarLogin(String usuario, String clave, Login login) {
         if (validarCampos(login)) {
             try {
                 if (dao.realizarLogin(usuario, clave)) {
