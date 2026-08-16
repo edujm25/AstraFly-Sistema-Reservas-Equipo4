@@ -15,11 +15,17 @@ public class Login extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         background.setBlur(jPanel1);
-        System.out.println(getClass().getClassLoader().getResource("vista/imagenes/AstraFlyLogo.svg"));
+        btnIngresar.setArc(15);
+        
+        // --comprbar si existe una imagen - System.out.println(getClass().getClassLoader().getResource("vista/imagenes/AstraFlyLogo.svg"));
         sVGImageUser.setSvgImage("vista/imagenes/user-svgrepo-com.svg", 25, 25);
         sVGImageLock.setSvgImage("vista/imagenes/lock-svgrepo-com.svg", 25, 25);
         sVGAstraFlyIcon.setSvgImage("vista/imagenes/AstraFlyIconInSVG(1).svg", 200, 150);
         //setBackground(new Color(0, 0, 0, 0));
+        
+        lblPasswordVacio.setVisible(false);
+        lblUsuarioVacio.setVisible(false);
+        lblWrongUser.setVisible(false);
 
         background.setLayout(null);
         //jPanel1.setSize(jPanel1.getPreferredSize());
@@ -32,6 +38,30 @@ public class Login extends javax.swing.JFrame {
         });
 
         centrarPanel();
+    }
+    
+    public swing.Button getBtnIngresar() {
+        return btnIngresar;
+    }
+ 
+    public swing.TextField getTxtUsuario() {
+        return txtUsuario;
+    }
+ 
+    public swing.PasswordField getTxtContrasena() {
+        return txtPassword;
+    }
+    
+    public javax.swing.JLabel getWrongUserMessage() {
+        return lblWrongUser;
+    }
+    
+    public javax.swing.JLabel getUsuarioVacioMessage() {
+        return lblUsuarioVacio;
+    }
+    
+    public javax.swing.JLabel getPasswordVacioMessage() {
+        return lblPasswordVacio;
     }
 
     private void centrarPanel() {
@@ -53,15 +83,17 @@ public class Login extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        textField1 = new swing.TextField();
-        passwordField1 = new swing.PasswordField();
-        button1 = new swing.Button();
+        txtUsuario = new swing.TextField();
+        txtPassword = new swing.PasswordField();
+        btnIngresar = new swing.Button();
         jLabel6 = new javax.swing.JLabel();
         sVGImageLock = new swing.SVGImage();
         sVGAstraFlyIcon = new swing.SVGImage();
         sVGImageUser = new swing.SVGImage();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        lblPasswordVacio = new javax.swing.JLabel();
+        lblWrongUser = new javax.swing.JLabel();
+        lblUsuarioVacio = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -81,43 +113,55 @@ public class Login extends javax.swing.JFrame {
         jLabel2.setText("Inicia sesión para continuar");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 160, -1, -1));
 
-        textField1.setHint("Usuario");
-        textField1.addActionListener(new java.awt.event.ActionListener() {
+        txtUsuario.setHint("Usuario");
+        txtUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textField1ActionPerformed(evt);
+                txtUsuarioActionPerformed(evt);
             }
         });
-        jPanel1.add(textField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 200, 240, -1));
+        jPanel1.add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 200, 240, 30));
 
-        passwordField1.setHint("Contraseña");
-        jPanel1.add(passwordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 260, 240, -1));
+        txtPassword.setHint("Contraseña");
+        jPanel1.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 260, 240, 30));
 
-        button1.setBackground(new java.awt.Color(4, 103, 232));
-        button1.setForeground(new java.awt.Color(255, 255, 255));
-        button1.setText("Iniciar Sesión");
-        button1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        button1.addActionListener(new java.awt.event.ActionListener() {
+        btnIngresar.setBackground(new java.awt.Color(4, 103, 232));
+        btnIngresar.setForeground(new java.awt.Color(255, 255, 255));
+        btnIngresar.setText("Iniciar Sesión");
+        btnIngresar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnIngresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                button1ActionPerformed(evt);
+                btnIngresarActionPerformed(evt);
             }
         });
-        jPanel1.add(button1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 330, 200, 40));
+        jPanel1.add(btnIngresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 340, 200, 40));
 
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(170, 184, 191));
         jLabel6.setText("¿No tienes cuenta? Contacta con el administrador");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 380, 290, 40));
-        jPanel1.add(sVGImageLock, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 30, 30));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 380, 290, 40));
+        jPanel1.add(sVGImageLock, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, 30, 30));
         jPanel1.add(sVGAstraFlyIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, 167, 80));
-        jPanel1.add(sVGImageUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 30, 30));
+        jPanel1.add(sVGImageUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, 30, 30));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 28)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("AstraFly");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 70, 110, 50));
 
-        jLabel4.setForeground(new java.awt.Color(255, 51, 51));
-        jLabel4.setText("Usuario y/o Contraseña incorrectos, intente nuevamente.");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, -1, -1));
+        lblPasswordVacio.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        lblPasswordVacio.setForeground(new java.awt.Color(255, 51, 51));
+        lblPasswordVacio.setText("El campo de contraseña no debe estar vacio!");
+        jPanel1.add(lblPasswordVacio, new org.netbeans.lib.awtextra.AbsoluteConstraints(58, 300, 230, -1));
+
+        lblWrongUser.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        lblWrongUser.setForeground(new java.awt.Color(255, 51, 51));
+        lblWrongUser.setText("Usuario y/o Contraseña incorrectos, intente nuevamente.");
+        jPanel1.add(lblWrongUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, -1, -1));
+
+        lblUsuarioVacio.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        lblUsuarioVacio.setForeground(new java.awt.Color(255, 51, 51));
+        lblUsuarioVacio.setText("El campo de usuario no debe estar vacio!");
+        jPanel1.add(lblUsuarioVacio, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 300, 220, -1));
 
         background.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 50, 330, 420));
 
@@ -141,13 +185,13 @@ public class Login extends javax.swing.JFrame {
         //String pass = String.valueOf(txtPassword.getPassword());
     }//GEN-LAST:event_cmdLoginActionPerformed
 
-    private void textField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textField1ActionPerformed
+    private void txtUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsuarioActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_textField1ActionPerformed
+    }//GEN-LAST:event_txtUsuarioActionPerformed
 
-    private void button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button1ActionPerformed
+    private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_button1ActionPerformed
+    }//GEN-LAST:event_btnIngresarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -189,17 +233,19 @@ public class Login extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private login.Background background;
-    private swing.Button button1;
+    private swing.Button btnIngresar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
-    private swing.PasswordField passwordField1;
+    private javax.swing.JLabel lblPasswordVacio;
+    private javax.swing.JLabel lblUsuarioVacio;
+    private javax.swing.JLabel lblWrongUser;
     private swing.SVGImage sVGAstraFlyIcon;
     private swing.SVGImage sVGImageLock;
     private swing.SVGImage sVGImageUser;
-    private swing.TextField textField1;
+    private swing.PasswordField txtPassword;
+    private swing.TextField txtUsuario;
     // End of variables declaration//GEN-END:variables
 }

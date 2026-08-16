@@ -28,22 +28,25 @@ public class DialogVuelo extends javax.swing.JDialog {
     public DialogVuelo(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        this.setLocation(null);
         
-        btnGuardar.addActionListener(e -> onGuardar());
-        btnCancelar.addActionListener(e -> onCancelar());
+        
+        
+        //btnGuardar.addActionListener(e -> onGuardar());
+        //btnCancelar.addActionListener(e -> onCancelar());
     }
     
     public void setVuelo(Vuelo v) {
         if (v == null) {
             idEdicion = 0;
             setTitle("Nuevo Vuelo");
-            limpiarCampos();
+            //limpiarCampos();
             return;
         }
  
         idEdicion = v.getId();
         setTitle("Editar Vuelo");
- 
+        /*
         txtId.setText(String.valueOf(v.getId()));
         txtNumeroVuelo.setText(v.getNumeroVuelo());
         txtAerolinea.setText(v.getAerolinea());
@@ -51,7 +54,7 @@ public class DialogVuelo extends javax.swing.JDialog {
         txtDestino.setText(v.getDestino());
         txtFecha.setText(v.getFecha().format(FORMATO_FECHA));
         txtHora.setText(v.getHora().format(FORMATO_HORA));
-        txtPrecio.setText(v.getPrecio().toString());
+        txtPrecio.setText(v.getPrecio().toString());*/
     }
 
     /**

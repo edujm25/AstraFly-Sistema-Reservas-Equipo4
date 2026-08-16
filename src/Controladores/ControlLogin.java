@@ -36,12 +36,16 @@ public class ControlLogin implements ActionListener {
     // Metodo para validar que los campos no esten vacios
     private boolean validarCampos(Login l) {
         if (l.getTxtUsuario().getText().trim().isEmpty()) {
-            JOptionPane.showMessageDialog(loginV, "El campo de usuario no debe estar vacio!", "Error!", JOptionPane.ERROR_MESSAGE);
+            l.getWrongUserMessage().setVisible(false);
+            l.getPasswordVacioMessage().setVisible(false);
+            l.getUsuarioVacioMessage().setVisible(true);
             l.getTxtUsuario().requestFocus();
             return false;
         }
         if (l.getTxtContrasena().getText().trim().isEmpty()) {
-            JOptionPane.showMessageDialog(loginV, "El campo de clave no debe estar vacio!", "Error!", JOptionPane.ERROR_MESSAGE);
+            l.getWrongUserMessage().setVisible(false);
+            l.getUsuarioVacioMessage().setVisible(false);
+            l.getPasswordVacioMessage().setVisible(true);
             l.getTxtContrasena().requestFocus();
             return false;
         }
@@ -52,7 +56,6 @@ public class ControlLogin implements ActionListener {
         if (validarCampos(login)) {
             try {
                 if (dao.realizarLogin(usuario, clave)) {
-                    JOptionPane.showMessageDialog(loginV, "Ingresado con exito!", "Exito!", JOptionPane.INFORMATION_MESSAGE);
                     login.setVisible(false);
 
                     Menu m = new Menu();
@@ -60,7 +63,9 @@ public class ControlLogin implements ActionListener {
                     m.setLocationRelativeTo(null);
                     return true;
                 } else {
-                    JOptionPane.showMessageDialog(login, "Error al tratar de ingresar.\nEl usuario o la clave estan incorrectos!", "Error!", JOptionPane.ERROR_MESSAGE);
+                    login.getUsuarioVacioMessage().setVisible(false);
+                    login.getPasswordVacioMessage().setVisible(false);
+                    login.getWrongUserMessage().setVisible(true);
                     limpiarCampos(login);
                     return false;
                 }
