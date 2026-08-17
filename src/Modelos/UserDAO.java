@@ -40,4 +40,26 @@ public class UserDAO {
         }
         return false;
     }
+    
+    public User buscarPorId(int id) {
+        String sql = "SELECT * FROM usuarios WHERE id = ?";
+        try {
+            cn = ConexionDB.conectar();
+            ps = cn.prepareStatement(sql);
+            ps.setInt(1, id);
+            rs = ps.executeQuery();
+            
+            if (rs.next()) {
+                return mapearUsuario(rs);
+            }
+        } catch (SQLException ex) {
+            System.out.println("Error al buscar Usuario");
+        }
+        return null;
+    }
+    
+    private User mapearUsuario(ResultSet rs) throws SQLException {
+        User u = new User();
+        return u;
+    }
 }

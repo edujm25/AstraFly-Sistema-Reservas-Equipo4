@@ -45,8 +45,8 @@ public class PanelUsuariosAdmin extends javax.swing.JPanel {
        // new ControlVuelos(this);
     }
     
-    public JTable getTblVuelos() {
-        return tblVuelos;
+    public JTable getTblUsuarios() {
+        return tblUsuarios;
     }
     
    // public swing.Button getBtnNuevo() {
@@ -88,9 +88,10 @@ public class PanelUsuariosAdmin extends javax.swing.JPanel {
         sVGEliminar = new swing.SVGImage();
         btnEliminar = new swing.Button();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblVuelos = new javax.swing.JTable();
+        tblUsuarios = new javax.swing.JTable();
         sVGEditar = new swing.SVGImage();
         btnEditar = new swing.Button();
+        btnNuevo = new swing.Button();
 
         setBackground(new java.awt.Color(214, 221, 230));
         setMinimumSize(new java.awt.Dimension(470, 510));
@@ -101,13 +102,14 @@ public class PanelUsuariosAdmin extends javax.swing.JPanel {
 
         btnBuscar.setForeground(new java.awt.Color(255, 255, 255));
         btnBuscar.setText("Buscar");
+        btnBuscar.addActionListener(this::btnBuscarActionPerformed);
 
         btnEliminar.setForeground(new java.awt.Color(255, 255, 255));
         btnEliminar.setText("     Eliminar");
         btnEliminar.setToolTipText("");
 
-        tblVuelos.setBackground(new java.awt.Color(244, 245, 249));
-        tblVuelos.setModel(new javax.swing.table.DefaultTableModel(
+        tblUsuarios.setBackground(new java.awt.Color(244, 245, 249));
+        tblUsuarios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
                 {null, null, null, null, null, null},
@@ -115,22 +117,26 @@ public class PanelUsuariosAdmin extends javax.swing.JPanel {
                 {null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "Nombre de Usuario", "Nombre ", "Cedula", "correo ", "numero"
+                "ID", "Nombre", "Apellido", "Pasaporte", "Correo ", "Numero_Telefono"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, true, true, true, true
+                false, true, true, true, true, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(tblVuelos);
+        jScrollPane1.setViewportView(tblUsuarios);
 
         btnEditar.setForeground(new java.awt.Color(255, 255, 255));
         btnEditar.setText("    Editar");
         btnEditar.setToolTipText("");
+
+        btnNuevo.setForeground(new java.awt.Color(255, 255, 255));
+        btnNuevo.setText("Buscar");
+        btnNuevo.addActionListener(this::btnNuevoActionPerformed);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -150,15 +156,16 @@ public class PanelUsuariosAdmin extends javax.swing.JPanel {
                             .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(15, 15, 15)
-                                .addComponent(sVGEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(175, 476, Short.MAX_VALUE))
+                                .addComponent(sVGEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtBuscar)
-                        .addGap(18, 18, 18)
+                        .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
+                        .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
             .addComponent(jScrollPane1)
         );
         layout.setVerticalGroup(
@@ -168,7 +175,8 @@ public class PanelUsuariosAdmin extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
+                    .addComponent(jLabel1)
+                    .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(12, 12, 12)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 436, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -184,16 +192,25 @@ public class PanelUsuariosAdmin extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnBuscarActionPerformed
+
+    private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnNuevoActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private swing.Button btnBuscar;
     private swing.Button btnEditar;
     private swing.Button btnEliminar;
+    private swing.Button btnNuevo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private swing.SVGImage sVGEditar;
     private swing.SVGImage sVGEliminar;
-    private javax.swing.JTable tblVuelos;
+    private javax.swing.JTable tblUsuarios;
     private javax.swing.JTextField txtBuscar;
     // End of variables declaration//GEN-END:variables
 }

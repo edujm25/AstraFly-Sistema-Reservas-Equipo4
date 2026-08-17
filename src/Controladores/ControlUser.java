@@ -1,11 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Controladores;
-import Modelos.Reservas;
-import Modelos.ReservasDAO;
-import vista.PanelesAdmin.PanelReservasAdmin;
+import Modelos.User;
+import Modelos.UserDAO;
+import vista.PanelesAdmin.PanelUsuariosAdmin;
 import vista.PanelesAdmin.ventanas.DialogReservas;
 
 import javax.swing.JOptionPane;
@@ -40,8 +36,8 @@ public class ControlUser implements ActionListener  {
 
         this.vista.getBtnEditar().setEnabled(false);
 
-        this.vista.getTblReservas().getSelectionModel().addListSelectionListener(e -> {
-            boolean haySeleccion = vista.getTblReservas().getSelectedRow() != -1;
+        this.vista.getTblUsuarios().getSelectionModel().addListSelectionListener(e -> {
+            boolean haySeleccion = vista.getTblUsuarios().getSelectedRow() != -1;
             vista.getBtnEditar().setEnabled(haySeleccion);
         });
 
@@ -82,9 +78,9 @@ public class ControlUser implements ActionListener  {
         mostrarEnTabla(dao.buscarPorColumna(columna, texto));
     }
 
-    private void mostrarEnTabla(List<Reservas> reservas) {
+    private void mostrarEnTabla(List<User> reservas) {
         limpiarTabla();
-        for (Reservas r : reservas) {
+        for (User r : reservas) {
             modelo.addRow(new Object[]{
                     r.getId(),
                     r.getIdUsuario(),
@@ -103,17 +99,17 @@ public class ControlUser implements ActionListener  {
     }
 
     public void editar() {
-        int fila = vista.getTblReservas().getSelectedRow();
+        int fila = vista.getTblUsuarios().getSelectedRow();
 
         if (fila == -1) {
             JOptionPane.showMessageDialog(vista, "Debe seleccionar una fila para la edicion.", "Error!", JOptionPane.ERROR_MESSAGE);
             return;
         }
 
-        int id = (int) vista.getTblReservas().getValueAt(fila, 0);
-        Reservas reserva = dao.buscarPorId(id);
+        int id = (int) vista.getTblUsuarios().getValueAt(fila, 0);
+        User user = dao.buscarPorId(id);
 
-        if (reserva == null) {
+        if (user == null) {
             JOptionPane.showMessageDialog(vista, "Esa reserva ya no existe.", "Error!", JOptionPane.ERROR_MESSAGE);
             listar();
             return;
@@ -121,11 +117,11 @@ public class ControlUser implements ActionListener  {
 
         DialogReservas dialogo = new DialogReservas(
                 (java.awt.Frame) SwingUtilities.getWindowAncestor(vista), true);
-        dialogo.setReserva(reserva);
+        dialogo.setReserva(user);
         dialogo.setVisible(true);
 
         if (dialogo.isGuardado()) {
-            Reservas editada = dialogo.getReserva();
+            User editada = dialogo.getReserva();
             int r = dao.actualizar(editada);
             if (r == 1) {
                 JOptionPane.showMessageDialog(vista, "Reserva actualizada con exito!", "Exito!", JOptionPane.INFORMATION_MESSAGE);
