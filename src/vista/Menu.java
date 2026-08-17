@@ -14,6 +14,8 @@ public class Menu extends javax.swing.JFrame {
     public Menu() {
         //Se inicializan los componentes
         initComponents();
+        setIconImage(new javax.swing.ImageIcon(getClass().getResource("/vista/imagenes/AFAppIcon.png")).getImage());
+        setTitle("AstraFly 1.0.0");
         
         //Se agregan los diferentes frames del programa 
         contentPanel.add(new vista.PanelesAdmin.PanelReservasAdmin(), "Administrar Reservas");

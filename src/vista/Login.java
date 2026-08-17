@@ -2,10 +2,6 @@ package vista;
 
 import java.awt.Color;
 
-/**
- *
- * @author RAVEN
- */
 public class Login extends javax.swing.JFrame {
 
     /**
@@ -14,6 +10,8 @@ public class Login extends javax.swing.JFrame {
     public Login() {
         initComponents();
         this.setLocationRelativeTo(null);
+        setIconImage(new javax.swing.ImageIcon(getClass().getResource("/vista/imagenes/AFAppIcon.png")).getImage());
+        setTitle("AstraFly - Login");
         background.setBlur(jPanel1);
         btnIngresar.setArc(15);
         

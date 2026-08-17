@@ -64,7 +64,7 @@ public class DialogUsuarios extends javax.swing.JDialog {
         txtTelefono.setText(u.getNumeroTelefonico());
         // La contrasena NUNCA se precarga por seguridad. Si el campo se
         // deja vacio al editar, ControlUsuarios/UserDAO no la modifican.
-        //txtContrasena.setText("");
+        txtContrasena.setText("");
     }
     
     private void limpiarCampos() {
@@ -74,7 +74,7 @@ public class DialogUsuarios extends javax.swing.JDialog {
         txtPasaporte.setText("");
         txtCorreo.setText("");
         txtTelefono.setText("");
-        //txtContrasena.setText("");
+        txtContrasena.setText("");
     }
     
     public boolean isGuardado() {
@@ -89,7 +89,7 @@ public class DialogUsuarios extends javax.swing.JDialog {
         u.setDocumentoCedulaPasaporte(txtPasaporte.getText().trim());
         u.setCorreo(txtCorreo.getText().trim());
         u.setNumeroTelefonico(txtTelefono.getText().trim());
-        //u.setContrasena(new String(txtContrasena.getText()).trim());
+        u.setContrasena(new String(txtContrasena.getText()).trim());
         return u;
     }
     
@@ -118,7 +118,7 @@ public class DialogUsuarios extends javax.swing.JDialog {
                     "Telefono invalido", JOptionPane.WARNING_MESSAGE);
             return;
         }
-        /*
+        
         String clave = new String(txtContrasena.getText()).trim();
         boolean esNuevo = idEdicion == 0;
  
@@ -136,7 +136,7 @@ public class DialogUsuarios extends javax.swing.JDialog {
                     "La contrasena debe tener al menos 6 caracteres.",
                     "Contrasena invalida", JOptionPane.WARNING_MESSAGE);
             return;
-        }*/
+        }
  
         guardado = true;
         dispose();
@@ -171,6 +171,8 @@ public class DialogUsuarios extends javax.swing.JDialog {
         jLabel6 = new javax.swing.JLabel();
         btnGuardar = new swing.Button();
         btnCancelar = new swing.Button();
+        jLabel7 = new javax.swing.JLabel();
+        txtContrasena = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -220,35 +222,47 @@ public class DialogUsuarios extends javax.swing.JDialog {
         btnCancelar.setForeground(new java.awt.Color(255, 255, 255));
         btnCancelar.setText("Cancelar");
 
+        jLabel7.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel7.setText("Contraseña:");
+
+        txtContrasena.setBackground(new java.awt.Color(255, 255, 255));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel1))
-                .addGap(17, 17, 17)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(txtTelefono, javax.swing.GroupLayout.DEFAULT_SIZE, 226, Short.MAX_VALUE)
-                        .addComponent(txtCorreo)
-                        .addComponent(txtPasaporte)
-                        .addComponent(txtNombre)
-                        .addComponent(txtApellido)))
-                .addContainerGap(65, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(42, 42, 42)
                 .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(46, 46, 46))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel7)
+                        .addGap(17, 17, 17)
+                        .addComponent(txtContrasena))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel1))
+                        .addGap(17, 17, 17)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(txtTelefono, javax.swing.GroupLayout.DEFAULT_SIZE, 226, Short.MAX_VALUE)
+                                .addComponent(txtCorreo)
+                                .addComponent(txtPasaporte)
+                                .addComponent(txtNombre)
+                                .addComponent(txtApellido)))))
+                .addContainerGap(65, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -277,7 +291,11 @@ public class DialogUsuarios extends javax.swing.JDialog {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(104, 104, 104)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(txtContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(60, 60, 60)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -350,8 +368,10 @@ public class DialogUsuarios extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField txtApellido;
+    private javax.swing.JTextField txtContrasena;
     private javax.swing.JTextField txtCorreo;
     private javax.swing.JTextField txtId;
     private javax.swing.JTextField txtNombre;

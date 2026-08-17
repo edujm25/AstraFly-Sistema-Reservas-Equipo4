@@ -45,7 +45,7 @@ public class ControlUser implements ActionListener {
     }
 
     private void configurarTabla() {
-        String[] columnas = {"ID", "Nombre", "Apellido", "Pasaporte", "Correo ", "Numero_Telefono"};
+        String[] columnas = {"ID", "Usuario", "Nombre", "Pasaporte", "Correo ", "Numero_Telefono"};
         modelo = new DefaultTableModel(columnas, 0) {
             @Override
             public boolean isCellEditable(int row, int column) {

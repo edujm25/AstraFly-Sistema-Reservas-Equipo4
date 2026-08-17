@@ -113,7 +113,7 @@ public class PanelUsuariosAdmin extends javax.swing.JPanel {
                 {null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "Nombre", "Apellido", "Pasaporte", "Correo ", "Numero_Telefono"
+                "ID", "Usuario", "Nombre", "Pasaporte", "Correo ", "Numero_Telefono"
             }
         ) {
             boolean[] canEdit = new boolean [] {
