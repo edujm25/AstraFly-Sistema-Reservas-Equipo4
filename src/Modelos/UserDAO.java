@@ -3,7 +3,7 @@ package Modelos;
 import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import proyectofinal_equipo2.BaseDeDatos.ConexionDB;
+import proyectofinal_equipo2.ConexionDB;
 /**
  *
  * @author shing

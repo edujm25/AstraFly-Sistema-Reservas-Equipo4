@@ -26,19 +26,94 @@ public class PanelAcercaDe extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jTextPane1 = new javax.swing.JTextPane();
+        jLabel4 = new javax.swing.JLabel();
+        jTextPane2 = new javax.swing.JTextPane();
+        jLabel5 = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+
+        setBackground(new java.awt.Color(230, 235, 243));
+        setPreferredSize(new java.awt.Dimension(701, 547));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel1.setText("Sistemas de Reservsa de Vuelos ");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 0, 466, 46));
+
+        jLabel2.setText("Version 1.0.0");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 40, -1, -1));
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        jLabel3.setText("AstrFly");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 290, 120, 70));
+
+        jTextPane1.setEditable(false);
+        jTextPane1.setBackground(new java.awt.Color(230, 235, 243));
+        jTextPane1.setText("AstraFly centraliza la operacion diaria de una aerolinea: control de vuelos, gestion de usuarios y administracion de reservas, todo desde un solo panel de escritorio, disenado para reducir el trabajo manual y dar visibilidad completa del estado de cada vuelo en tiempo real.\n\n La plataforma permite registrar vuelos con su itinerario y estado, vincular reservas a usuarios con seguimiento de pago, y administrar las cuentas del personal autorizado, evitando duplicidad de informacion.");
+        add(jTextPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 70, 390, 140));
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel4.setText("Manual de Usuario");
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 220, 130, 30));
+
+        jTextPane2.setBackground(new java.awt.Color(230, 235, 243));
+        jTextPane2.setText("1. Inicia sesion con tu usuario y contrasena.\n\n2. Utiliza el menu para gestionar vuelos, reservas o usuarios. \n\n3. Registra, busca, edita o elimina informacion segun necesites. \n\n4. Consulta la seccion Acerca de para mas informacion. ");
+        add(jTextPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 260, 360, -1));
+
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel5.setText("Creadores");
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 420, -1, -1));
+        add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 400, 450, 20));
+
+        jPanel1.setBackground(new java.awt.Color(230, 235, 243));
+        jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        jLabel7.setText("Edwis Jimenez");
+        jPanel1.add(jLabel7);
+
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 450, 110, 30));
+
+        jPanel2.setBackground(new java.awt.Color(230, 235, 243));
+        jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        jLabel6.setText("Shing Roxber Cruz Carbajal ");
+        jPanel2.add(jLabel6);
+
+        add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 450, 160, 30));
+
+        jLabel8.setForeground(new java.awt.Color(100, 100, 100));
+        jLabel8.setText("Instituto Tecnologico de las Americas ");
+        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 500, 280, 20));
+
+        jLabel9.setForeground(new java.awt.Color(100, 100, 100));
+        jLabel9.setText("18/08/2026");
+        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 510, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JTextPane jTextPane1;
+    private javax.swing.JTextPane jTextPane2;
     // End of variables declaration//GEN-END:variables
 }
