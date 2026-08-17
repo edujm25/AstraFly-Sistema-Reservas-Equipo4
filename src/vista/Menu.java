@@ -20,6 +20,107 @@ public class Menu extends javax.swing.JFrame {
         contentPanel.add(new vista.PanelesAdmin.PanelUsuariosAdmin(), "Administrar Usuarios");
         contentPanel.add(new vista.PanelesAdmin.PanelVuelosAdmin(), "Administratr Vuelos");
         contentPanel.add(new vista.PanelAcercaDe(), "Acerca De");
+        
+        java.awt.CardLayout cardLayout = (java.awt.CardLayout) contentPanel.getLayout();
+ 
+        sVGVuelos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        sVGVuelos.addMouseListener(new java.awt.event.MouseAdapter() {
+            @Override
+            public void mouseClicked(java.awt.event.MouseEvent e) {
+                cardLayout.show(contentPanel, "Administrar Vuelos");
+            }
+        });
+        jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            @Override
+            public void mouseClicked(java.awt.event.MouseEvent e) {
+                cardLayout.show(contentPanel, "Administrar Vuelos");
+            }
+        });
+ 
+        sVGReservasEdit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        sVGReservasEdit.addMouseListener(new java.awt.event.MouseAdapter() {
+            @Override
+            public void mouseClicked(java.awt.event.MouseEvent e) {
+                cardLayout.show(contentPanel, "Administrar Reservas");
+            }
+        });
+        jLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            @Override
+            public void mouseClicked(java.awt.event.MouseEvent e) {
+                cardLayout.show(contentPanel, "Administrar Reservas");
+            }
+        });
+ 
+        sVGUsuarios.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        sVGUsuarios.addMouseListener(new java.awt.event.MouseAdapter() {
+            @Override
+            public void mouseClicked(java.awt.event.MouseEvent e) {
+                cardLayout.show(contentPanel, "Administrar Usuarios");
+            }
+        });
+        jLabel5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
+            @Override
+            public void mouseClicked(java.awt.event.MouseEvent e) {
+                cardLayout.show(contentPanel, "Administrar Usuarios");
+            }
+        });
+ 
+        sVGAcercaDe.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        sVGAcercaDe.addMouseListener(new java.awt.event.MouseAdapter() {
+            @Override
+            public void mouseClicked(java.awt.event.MouseEvent e) {
+                cardLayout.show(contentPanel, "Acerca De");
+            }
+        });
+        jLabel4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            @Override
+            public void mouseClicked(java.awt.event.MouseEvent e) {
+                cardLayout.show(contentPanel, "Acerca De");
+            }
+        });
+ 
+        sVGSalir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        sVGSalir.addMouseListener(new java.awt.event.MouseAdapter() {
+            @Override
+            public void mouseClicked(java.awt.event.MouseEvent e) {
+                System.exit(0);
+            }
+        });
+        jLabel6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
+            @Override
+            public void mouseClicked(java.awt.event.MouseEvent e) {
+                System.exit(0);
+            }
+        });
+ 
+        // Las tarjetas del home (vuelosPanel3, reservasPanel3, usuariosPanel5)
+        // tambien llevan a su seccion correspondiente al hacerles clic
+        vuelosPanel3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        vuelosPanel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            @Override
+            public void mouseClicked(java.awt.event.MouseEvent e) {
+                cardLayout.show(contentPanel, "Administrar Vuelos");
+            }
+        });
+        reservasPanel3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        reservasPanel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            @Override
+            public void mouseClicked(java.awt.event.MouseEvent e) {
+                cardLayout.show(contentPanel, "Administrar Reservas");
+            }
+        });
+        usuariosPanel5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        usuariosPanel5.addMouseListener(new java.awt.event.MouseAdapter() {
+            @Override
+            public void mouseClicked(java.awt.event.MouseEvent e) {
+                cardLayout.show(contentPanel, "Administrar Usuarios");
+            }
+        });
 
         
         inicio.setImage("/vista/imagenes/AdminAFMenuImage.png");//se le asigna una imagen al menu de inicio
@@ -31,7 +132,7 @@ public class Menu extends javax.swing.JFrame {
         
         this.setLocationRelativeTo(null);//centrar el form
         
-        //Se le asigna imagenes (iconos) a los diferentes labels
+        //Se le asigna imagenes/iconos a los diferentes labels
         AstraFlyIcon1.setSvgImage("vista/imagenes/AstraFlyIconInSVG(1).svg", 200, 150);
         
         sVGVuelos.setSvgImage("vista/imagenes/airplane-svgrepo-com.svg", 35, 35);

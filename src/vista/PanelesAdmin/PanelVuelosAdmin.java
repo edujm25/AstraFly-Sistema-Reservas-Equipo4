@@ -1,5 +1,11 @@
-    package vista.PanelesAdmin;
+package vista.PanelesAdmin;
+
 import java.awt.Color;
+ 
+import Controladores.ControlVuelos;
+import javax.swing.JTable;
+import javax.swing.JComboBox;
+import javax.swing.JTextField;
 
 /**
  *
@@ -8,13 +14,13 @@ import java.awt.Color;
 public class PanelVuelosAdmin extends javax.swing.JPanel {
     
     public static void main(String[] args) {
-    javax.swing.JFrame frame = new javax.swing.JFrame("Prueba");
-    frame.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
-    frame.add(new PanelVuelosAdmin());
-    frame.pack();
-    frame.setLocationRelativeTo(null);
-    frame.setVisible(true);
-}
+        javax.swing.JFrame frame = new javax.swing.JFrame("Prueba");
+        frame.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
+        frame.add(new PanelVuelosAdmin());
+        frame.pack();
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
+    }
 
     /**
      * Creates new form PanelVuelosAdmin
@@ -22,10 +28,11 @@ public class PanelVuelosAdmin extends javax.swing.JPanel {
     public PanelVuelosAdmin() {
         initComponents();
         
+        //Asignar imagenes a los iconos svg
         sVGEditar.setSvgImage("vista/imagenes/pen-svgrepo-com.svg", 14, 14);
         sVGEliminar.setSvgImage("vista/imagenes/delete-filled-svgrepo-com.svg", 14, 14);
         
-        //Setting up de elementos
+        //configuracion de elementos
         btnBuscar.setArc(10);
         
         btnNuevo.setArc(10);
@@ -35,6 +42,35 @@ public class PanelVuelosAdmin extends javax.swing.JPanel {
         
         btnEliminar.setArc(10);
         btnEliminar.setBackground(new Color(204, 65, 56, 255));
+        new ControlVuelos(this);
+    }
+    
+    public JTable getTblVuelos() {
+        return tblVuelos;
+    }
+    
+    public swing.Button getBtnNuevo() {
+        return btnNuevo;
+    }
+    
+    public swing.Button getBtnEditar() {
+        return btnEditar;
+    }
+    
+    public swing.Button getBtnEliminar() {
+        return btnEliminar;
+    }
+    
+    public swing.Button getBtnBuscar() {
+        return btnBuscar;
+    }
+    
+    public JComboBox getCbBuscarPor() {
+        return cbBuscarPor;
+    }
+    
+    public JTextField getTxtBuscar() {
+        return txtBuscar;
     }
 
     /**
@@ -69,6 +105,7 @@ public class PanelVuelosAdmin extends javax.swing.JPanel {
 
         cbBuscarPor.setBackground(new java.awt.Color(214, 221, 230));
         cbBuscarPor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Destino", "Origen", "Numero", "Aerolinea" }));
+        cbBuscarPor.addActionListener(this::cbBuscarPorActionPerformed);
         add(cbBuscarPor, new org.netbeans.lib.awtextra.AbsoluteConstraints(82, 15, 122, -1));
 
         txtBuscar.setBackground(new java.awt.Color(255, 255, 255));
@@ -110,6 +147,10 @@ public class PanelVuelosAdmin extends javax.swing.JPanel {
         btnEditar.setToolTipText("");
         add(btnEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 464, 100, -1));
     }// </editor-fold>//GEN-END:initComponents
+
+    private void cbBuscarPorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbBuscarPorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbBuscarPorActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
