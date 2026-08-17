@@ -1,6 +1,6 @@
 package Modelos;
 
-import proyectofinal_equipo2.BaseDeDatos.ConexionDB;
+import proyectofinal_equipo2.ConexionDB;
 import Modelos.Reservas;
 
 import java.sql.*;
