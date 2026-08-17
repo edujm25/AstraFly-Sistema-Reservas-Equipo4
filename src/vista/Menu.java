@@ -18,7 +18,7 @@ public class Menu extends javax.swing.JFrame {
         //Se agregan los diferentes frames del programa 
         contentPanel.add(new vista.PanelesAdmin.PanelReservasAdmin(), "Administrar Reservas");
         contentPanel.add(new vista.PanelesAdmin.PanelUsuariosAdmin(), "Administrar Usuarios");
-        contentPanel.add(new vista.PanelesAdmin.PanelVuelosAdmin(), "Administratr Vuelos");
+        contentPanel.add(new vista.PanelesAdmin.PanelVuelosAdmin(), "Administrar Vuelos");
         contentPanel.add(new vista.PanelAcercaDe(), "Acerca De");
         
         java.awt.CardLayout cardLayout = (java.awt.CardLayout) contentPanel.getLayout();

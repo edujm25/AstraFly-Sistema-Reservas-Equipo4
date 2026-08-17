@@ -1,20 +1,62 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
 package vista.PanelesAdmin;
+
+import Controladores.ControlReservas;
+ 
+import javax.swing.JTable;
+import javax.swing.JComboBox;
+import javax.swing.JTextField;
 
 /**
  *
  * @author Edwis Jimenez
  */
 public class PanelReservasAdmin extends javax.swing.JPanel {
+    
+    public static void main(String[] args) {
+        javax.swing.JFrame frame = new javax.swing.JFrame("Prueba");
+        frame.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
+        frame.add(new PanelReservasAdmin());
+        frame.pack();
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
+    }
 
     /**
-     * Creates new form PanelReservasAdmin
+     * Creates new form PanelVuelosAdmin
      */
     public PanelReservasAdmin() {
         initComponents();
+        
+        //Asignar imagenes a los iconos svg
+        sVGEditar.setSvgImage("vista/imagenes/pen-svgrepo-com.svg", 14, 14);
+        sVGEliminar.setSvgImage("vista/imagenes/delete-filled-svgrepo-com.svg", 14, 14);
+        sVGEliminar.setVisible(false);
+        
+        //configuracion de elementos
+        btnBuscar.setArc(10);
+        
+        btnEditar.setArc(10);
+        new ControlReservas(this);
+    }
+    
+    public JTable getTblReservas() {
+        return tblReservas;
+    }
+    
+    public swing.Button getBtnEditar() {
+        return btnEditar;
+    }
+    
+    public swing.Button getBtnBuscar() {
+        return btnBuscar;
+    }
+    
+    public JComboBox getCbBuscarPor() {
+        return cbBuscarPor;
+    }
+    
+    public JTextField getTxtBuscar() {
+        return txtBuscar;
     }
 
     /**
@@ -26,19 +68,122 @@ public class PanelReservasAdmin extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
+        cbBuscarPor = new javax.swing.JComboBox<>();
+        txtBuscar = new javax.swing.JTextField();
+        btnBuscar = new swing.Button();
+        sVGEliminar = new swing.SVGImage();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblReservas = new javax.swing.JTable();
+        sVGEditar = new swing.SVGImage();
+        btnEditar = new swing.Button();
+
+        setBackground(new java.awt.Color(214, 221, 230));
+        setMinimumSize(new java.awt.Dimension(470, 510));
+        setPreferredSize(new java.awt.Dimension(701, 547));
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setText("Buscar por:");
+
+        cbBuscarPor.setBackground(new java.awt.Color(214, 221, 230));
+        cbBuscarPor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Codigo", "Pasajero", "Estado" }));
+        cbBuscarPor.addActionListener(this::cbBuscarPorActionPerformed);
+
+        txtBuscar.setBackground(new java.awt.Color(255, 255, 255));
+
+        btnBuscar.setForeground(new java.awt.Color(255, 255, 255));
+        btnBuscar.setText("Buscar");
+
+        tblReservas.setBackground(new java.awt.Color(244, 245, 249));
+        tblReservas.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "ID", "Usuario_id", "Vuelo_id", "Codigo_Reserva", "Nombre_Pasajero", "Fecha_Reserva", "Estado", "Precio_Pagado"
+            }
+        ));
+        jScrollPane1.setViewportView(tblReservas);
+
+        btnEditar.setForeground(new java.awt.Color(255, 255, 255));
+        btnEditar.setText("    Editar");
+        btnEditar.setToolTipText("");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(6, 6, 6)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(14, 14, 14)
+                                .addComponent(sVGEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(34, 34, 34)
+                        .addComponent(sVGEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cbBuscarPor, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jScrollPane1)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(11, 11, 11)
+                                .addComponent(jLabel1))
+                            .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(15, 15, 15)
+                        .addComponent(cbBuscarPor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(7, 7, 7)
+                        .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(12, 12, 12)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 436, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(sVGEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(sVGEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(14, 14, 14))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void cbBuscarPorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbBuscarPorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbBuscarPorActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private swing.Button btnBuscar;
+    private swing.Button btnEditar;
+    private javax.swing.JComboBox<String> cbBuscarPor;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private swing.SVGImage sVGEditar;
+    private swing.SVGImage sVGEliminar;
+    private javax.swing.JTable tblReservas;
+    private javax.swing.JTextField txtBuscar;
     // End of variables declaration//GEN-END:variables
 }
