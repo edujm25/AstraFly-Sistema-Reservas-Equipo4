@@ -1,20 +1,76 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
 package vista.PanelesAdmin;
+
+import java.awt.Color;
+ 
+import Controladores.ControlVuelos;
+import javax.swing.JTable;
+import javax.swing.JComboBox;
+import javax.swing.JTextField;
 
 /**
  *
  * @author Edwis Jimenez
  */
 public class PanelUsuariosAdmin extends javax.swing.JPanel {
+    
+    public static void main(String[] args) {
+        javax.swing.JFrame frame = new javax.swing.JFrame("Prueba");
+        frame.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
+        frame.add(new PanelUsuariosAdmin());
+        frame.pack();
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
+    }
 
     /**
-     * Creates new form PanelUsuariosAdmin
+     * Creates new form PanelVuelosAdmin
      */
     public PanelUsuariosAdmin() {
         initComponents();
+        
+        //Asignar imagenes a los iconos svg
+        sVGEditar.setSvgImage("vista/imagenes/pen-svgrepo-com.svg", 14, 14);
+        sVGEliminar.setSvgImage("vista/imagenes/delete-filled-svgrepo-com.svg", 14, 14);
+        
+        //configuracion de elementos
+        btnBuscar.setArc(10);
+        
+        //btnNuevo.setArc(10);
+        //btnNuevo.setBackground(new Color(7, 122, 61, 255));
+        
+        btnEditar.setArc(10);
+        
+        btnEliminar.setArc(10);
+        btnEliminar.setBackground(new Color(204, 65, 56, 255));
+       // new ControlVuelos(this);
+    }
+    
+    public JTable getTblVuelos() {
+        return tblVuelos;
+    }
+    
+   // public swing.Button getBtnNuevo() {
+    //    return btnNuevo;
+    //}
+    
+    public swing.Button getBtnEditar() {
+        return btnEditar;
+    }
+    
+    public swing.Button getBtnEliminar() {
+        return btnEliminar;
+    }
+    
+    public swing.Button getBtnBuscar() {
+        return btnBuscar;
+    }
+    
+   // public JComboBox getCbBuscarPor() {
+        //return cbBuscarPor;
+    //}
+    
+    public JTextField getTxtBuscar() {
+        return txtBuscar;
     }
 
     /**
@@ -26,21 +82,118 @@ public class PanelUsuariosAdmin extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
+        txtBuscar = new javax.swing.JTextField();
+        btnBuscar = new swing.Button();
+        sVGEliminar = new swing.SVGImage();
+        btnEliminar = new swing.Button();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblVuelos = new javax.swing.JTable();
+        sVGEditar = new swing.SVGImage();
+        btnEditar = new swing.Button();
+
+        setBackground(new java.awt.Color(214, 221, 230));
+        setMinimumSize(new java.awt.Dimension(470, 510));
         setPreferredSize(new java.awt.Dimension(701, 547));
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel1.setText("Buscar:");
+
+        btnBuscar.setForeground(new java.awt.Color(255, 255, 255));
+        btnBuscar.setText("Buscar");
+
+        btnEliminar.setForeground(new java.awt.Color(255, 255, 255));
+        btnEliminar.setText("     Eliminar");
+        btnEliminar.setToolTipText("");
+
+        tblVuelos.setBackground(new java.awt.Color(244, 245, 249));
+        tblVuelos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
+            },
+            new String [] {
+                "ID", "Nombre de Usuario", "Nombre ", "Cedula", "correo ", "numero"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, true, true, true, true
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(tblVuelos);
+
+        btnEditar.setForeground(new java.awt.Color(255, 255, 255));
+        btnEditar.setText("    Editar");
+        btnEditar.setToolTipText("");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(6, 6, 6)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(14, 14, 14)
+                                .addComponent(sVGEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(19, 19, 19)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(15, 15, 15)
+                                .addComponent(sVGEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(175, 476, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtBuscar)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
+            .addComponent(jScrollPane1)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(6, 6, 6)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addGap(12, 12, 12)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 436, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(sVGEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(sVGEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(14, 14, 14))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private swing.Button btnBuscar;
+    private swing.Button btnEditar;
+    private swing.Button btnEliminar;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private swing.SVGImage sVGEditar;
+    private swing.SVGImage sVGEliminar;
+    private javax.swing.JTable tblVuelos;
+    private javax.swing.JTextField txtBuscar;
     // End of variables declaration//GEN-END:variables
 }
