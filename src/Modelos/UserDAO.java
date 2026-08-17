@@ -1,5 +1,6 @@
 package Modelos;
 
+import proyectofinal_equipo2.ConexionDB;
 import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;

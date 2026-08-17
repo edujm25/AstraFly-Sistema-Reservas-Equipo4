@@ -1,13 +1,7 @@
 package Modelos;
-<<<<<<< HEAD
 
 import proyectofinal_equipo2.ConexionDB;
-=======
- 
-import proyectofinal_equipo2.BaseDeDatos.ConexionDB;
->>>>>>> 7e7fc938654fda779ff3ac1bafffb577448a8cfb
 import Modelos.Vuelo;
- 
 import java.sql.*;
 import java.math.BigDecimal;
 import java.util.List;
