@@ -2,9 +2,8 @@ package vista.PanelesAdmin;
 
 import java.awt.Color;
  
-import Controladores.ControlVuelos;
+import Controladores.ControlUser;
 import javax.swing.JTable;
-import javax.swing.JComboBox;
 import javax.swing.JTextField;
 
 /**
@@ -35,40 +34,36 @@ public class PanelUsuariosAdmin extends javax.swing.JPanel {
         //configuracion de elementos
         btnBuscar.setArc(10);
         
-        //btnNuevo.setArc(10);
-        //btnNuevo.setBackground(new Color(7, 122, 61, 255));
+        btnNuevo.setArc(10);
+        btnNuevo.setBackground(new Color(7, 122, 61, 255));
         
         btnEditar.setArc(10);
         
         btnEliminar.setArc(10);
         btnEliminar.setBackground(new Color(204, 65, 56, 255));
-       // new ControlVuelos(this);
+       new ControlUser(this);
     }
     
     public JTable getTblUsuarios() {
         return tblUsuarios;
     }
-    
-   // public swing.Button getBtnNuevo() {
-    //    return btnNuevo;
-    //}
-    
+ 
+    public swing.Button getBtnNuevo() {
+        return btnNuevo;
+    }
+ 
     public swing.Button getBtnEditar() {
         return btnEditar;
     }
-    
+ 
     public swing.Button getBtnEliminar() {
         return btnEliminar;
     }
-    
+ 
     public swing.Button getBtnBuscar() {
         return btnBuscar;
     }
-    
-   // public JComboBox getCbBuscarPor() {
-        //return cbBuscarPor;
-    //}
-    
+ 
     public JTextField getTxtBuscar() {
         return txtBuscar;
     }
@@ -84,29 +79,30 @@ public class PanelUsuariosAdmin extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
         txtBuscar = new javax.swing.JTextField();
-        btnBuscar = new swing.Button();
         sVGEliminar = new swing.SVGImage();
-        btnEliminar = new swing.Button();
+        btnBuscar = new swing.Button();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblUsuarios = new javax.swing.JTable();
         sVGEditar = new swing.SVGImage();
         btnEditar = new swing.Button();
         btnNuevo = new swing.Button();
+        btnEliminar = new swing.Button();
 
         setBackground(new java.awt.Color(214, 221, 230));
         setMinimumSize(new java.awt.Dimension(470, 510));
         setPreferredSize(new java.awt.Dimension(701, 547));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel1.setText("Buscar:");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 12, -1, -1));
+        add(txtBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(56, 6, 357, 35));
+        add(sVGEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 507, 20, 20));
 
         btnBuscar.setForeground(new java.awt.Color(255, 255, 255));
         btnBuscar.setText("Buscar");
         btnBuscar.addActionListener(this::btnBuscarActionPerformed);
-
-        btnEliminar.setForeground(new java.awt.Color(255, 255, 255));
-        btnEliminar.setText("     Eliminar");
-        btnEliminar.setToolTipText("");
+        add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(419, 7, 124, -1));
 
         tblUsuarios.setBackground(new java.awt.Color(244, 245, 249));
         tblUsuarios.setModel(new javax.swing.table.DefaultTableModel(
@@ -130,66 +126,23 @@ public class PanelUsuariosAdmin extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblUsuarios);
 
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 53, 701, 436));
+        add(sVGEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 507, 20, 20));
+
         btnEditar.setForeground(new java.awt.Color(255, 255, 255));
         btnEditar.setText("    Editar");
         btnEditar.setToolTipText("");
+        add(btnEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 501, 100, -1));
 
         btnNuevo.setForeground(new java.awt.Color(255, 255, 255));
-        btnNuevo.setText("Buscar");
+        btnNuevo.setText("Nuevo");
         btnNuevo.addActionListener(this::btnNuevoActionPerformed);
+        add(btnNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(592, 7, 103, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(6, 6, 6)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(14, 14, 14)
-                                .addComponent(sVGEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(19, 19, 19)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(15, 15, 15)
-                                .addComponent(sVGEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
-                        .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
-            .addComponent(jScrollPane1)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(6, 6, 6)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1)
-                    .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(12, 12, 12)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 436, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(sVGEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(sVGEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(14, 14, 14))
-        );
+        btnEliminar.setForeground(new java.awt.Color(255, 255, 255));
+        btnEliminar.setText("     Eliminar");
+        btnEliminar.setToolTipText("");
+        add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(125, 501, 100, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed

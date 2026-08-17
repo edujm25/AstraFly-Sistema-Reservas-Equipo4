@@ -15,6 +15,8 @@ public class PanelAcercaDe extends javax.swing.JPanel {
      */
     public PanelAcercaDe() {
         initComponents();
+        sVGAstraFlyLogo.setSvgImage("vista/imagenes/SVGblueAstraFlyIcon.svg", 150, 100);
+
     }
 
     /**
@@ -28,7 +30,6 @@ public class PanelAcercaDe extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         jTextPane1 = new javax.swing.JTextPane();
         jLabel4 = new javax.swing.JLabel();
         jTextPane2 = new javax.swing.JTextPane();
@@ -39,7 +40,7 @@ public class PanelAcercaDe extends javax.swing.JPanel {
         jPanel2 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
+        sVGAstraFlyLogo = new swing.SVGImage();
 
         setBackground(new java.awt.Color(230, 235, 243));
         setPreferredSize(new java.awt.Dimension(701, 547));
@@ -51,10 +52,6 @@ public class PanelAcercaDe extends javax.swing.JPanel {
 
         jLabel2.setText("Version 1.0.0");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 40, -1, -1));
-
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jLabel3.setText("AstrFly");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 290, 120, 70));
 
         jTextPane1.setEditable(false);
         jTextPane1.setBackground(new java.awt.Color(230, 235, 243));
@@ -77,10 +74,10 @@ public class PanelAcercaDe extends javax.swing.JPanel {
         jPanel1.setBackground(new java.awt.Color(230, 235, 243));
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jLabel7.setText("Edwis Jimenez");
+        jLabel7.setText("Edwis Jimenez Mercedes");
         jPanel1.add(jLabel7);
 
-        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 450, 110, 30));
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 450, 150, 30));
 
         jPanel2.setBackground(new java.awt.Color(230, 235, 243));
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -88,32 +85,28 @@ public class PanelAcercaDe extends javax.swing.JPanel {
         jLabel6.setText("Shing Roxber Cruz Carbajal ");
         jPanel2.add(jLabel6);
 
-        add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 450, 160, 30));
+        add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 450, 160, 30));
 
         jLabel8.setForeground(new java.awt.Color(100, 100, 100));
         jLabel8.setText("Instituto Tecnologico de las Americas ");
         add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 500, 280, 20));
-
-        jLabel9.setForeground(new java.awt.Color(100, 100, 100));
-        jLabel9.setText("18/08/2026");
-        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 510, -1, -1));
+        add(sVGAstraFlyLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 200, 160));
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTextPane jTextPane1;
     private javax.swing.JTextPane jTextPane2;
+    private swing.SVGImage sVGAstraFlyLogo;
     // End of variables declaration//GEN-END:variables
 }

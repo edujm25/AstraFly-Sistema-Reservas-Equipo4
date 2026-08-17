@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Modelos;
 
 /**
@@ -9,19 +5,32 @@ package Modelos;
  * @author shing
  */
 public class User {
-    int id;
-    String usuario;
-    String clave;
+
+    private int id;
+    private String nombreUsuario;
+    private String nombreApellido;
+    private String documentoCedulaPasaporte;
+    private String correo;
+    private String numeroTelefonico;
+    private String contrasena;
 
     public User() {
     }
 
-    public User(int id, String usuario, String clave) {
+    //Constructor
+    public User(int id, String nombreUsuario, String nombreApellido, String documentoCedulaPasaporte,
+                String correo, String numeroTelefonico, String contrasena) {
         this.id = id;
-        this.usuario = usuario;
-        this.clave = clave;
+        this.nombreUsuario = nombreUsuario;
+        this.nombreApellido = nombreApellido;
+        this.documentoCedulaPasaporte = documentoCedulaPasaporte;
+        this.correo = correo;
+        this.numeroTelefonico = numeroTelefonico;
+        this.contrasena = contrasena;
     }
-
+    
+    
+    //Getter y Setters
     public int getId() {
         return id;
     }
@@ -30,19 +39,56 @@ public class User {
         this.id = id;
     }
 
-    public String getUsuario() {
-        return usuario;
+    public String getNombreUsuario() {
+        return nombreUsuario;
     }
 
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
+    public void setNombreUsuario(String nombreUsuario) {
+        this.nombreUsuario = nombreUsuario;
     }
 
-    public String getClave() {
-        return clave;
+    public String getNombreApellido() {
+        return nombreApellido;
     }
 
-    public void setClave(String clave) {
-        this.clave = clave;
+    public void setNombreApellido(String nombreApellido) {
+        this.nombreApellido = nombreApellido;
+    }
+
+    public String getDocumentoCedulaPasaporte() {
+        return documentoCedulaPasaporte;
+    }
+
+    public void setDocumentoCedulaPasaporte(String documentoCedulaPasaporte) {
+        this.documentoCedulaPasaporte = documentoCedulaPasaporte;
+    }
+
+    public String getCorreo() {
+        return correo;
+    }
+
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
+
+    public String getNumeroTelefonico() {
+        return numeroTelefonico;
+    }
+
+    public void setNumeroTelefonico(String numeroTelefonico) {
+        this.numeroTelefonico = numeroTelefonico;
+    }
+
+    public String getContrasena() {
+        return contrasena;
+    }
+
+    public void setContrasena(String contrasena) {
+        this.contrasena = contrasena;
+    }
+
+    @Override
+    public String toString() {
+        return nombreUsuario + " (" + nombreApellido + ")";
     }
 }

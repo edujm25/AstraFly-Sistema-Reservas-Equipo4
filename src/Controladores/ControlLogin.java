@@ -51,7 +51,8 @@ public class ControlLogin implements ActionListener {
         }
         return true;
     }
-
+    
+    //Metodo que se encarga de validar los datos del login para loguearse
     public boolean accionarLogin(String usuario, String clave, Login login) {
         if (validarCampos(login)) {
             try {
