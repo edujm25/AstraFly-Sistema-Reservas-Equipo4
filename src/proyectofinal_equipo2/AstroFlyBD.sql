@@ -35,8 +35,8 @@ CREATE TABLE Vuelos (
     aerolinea VARCHAR(50) NOT NULL,
     origen VARCHAR(100) NOT NULL,
     destino VARCHAR(100) NOT NULL,
-    fecha_salida DATE NOT NULL,
-    hora_salida TIME NOT NULL,
+    fecha DATE NOT NULL,
+    hora TIME NOT NULL,
     precio DECIMAL(10,2) NOT NULL,
     estado ENUM('programado', 'retrasado', 'cancelado') DEFAULT 'programado',
     

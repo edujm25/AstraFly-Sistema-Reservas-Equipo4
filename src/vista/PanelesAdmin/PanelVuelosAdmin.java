@@ -1,20 +1,76 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
 package vista.PanelesAdmin;
+
+import java.awt.Color;
+ 
+import Controladores.ControlVuelos;
+import javax.swing.JTable;
+import javax.swing.JComboBox;
+import javax.swing.JTextField;
 
 /**
  *
  * @author Edwis Jimenez
  */
 public class PanelVuelosAdmin extends javax.swing.JPanel {
+    
+    public static void main(String[] args) {
+        javax.swing.JFrame frame = new javax.swing.JFrame("Prueba");
+        frame.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
+        frame.add(new PanelVuelosAdmin());
+        frame.pack();
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
+    }
 
     /**
      * Creates new form PanelVuelosAdmin
      */
     public PanelVuelosAdmin() {
         initComponents();
+        
+        //Asignar imagenes a los iconos svg
+        sVGEditar.setSvgImage("vista/imagenes/pen-svgrepo-com.svg", 14, 14);
+        sVGEliminar.setSvgImage("vista/imagenes/delete-filled-svgrepo-com.svg", 14, 14);
+        
+        //configuracion de elementos
+        btnBuscar.setArc(10);
+        
+        btnNuevo.setArc(10);
+        btnNuevo.setBackground(new Color(7, 122, 61, 255));
+        
+        btnEditar.setArc(10);
+        
+        btnEliminar.setArc(10);
+        btnEliminar.setBackground(new Color(204, 65, 56, 255));
+        new ControlVuelos(this);
+    }
+    
+    public JTable getTblVuelos() {
+        return tblVuelos;
+    }
+    
+    public swing.Button getBtnNuevo() {
+        return btnNuevo;
+    }
+    
+    public swing.Button getBtnEditar() {
+        return btnEditar;
+    }
+    
+    public swing.Button getBtnEliminar() {
+        return btnEliminar;
+    }
+    
+    public swing.Button getBtnBuscar() {
+        return btnBuscar;
+    }
+    
+    public JComboBox getCbBuscarPor() {
+        return cbBuscarPor;
+    }
+    
+    public JTextField getTxtBuscar() {
+        return txtBuscar;
     }
 
     /**
@@ -26,19 +82,88 @@ public class PanelVuelosAdmin extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        jLabel1 = new javax.swing.JLabel();
+        cbBuscarPor = new javax.swing.JComboBox<>();
+        txtBuscar = new javax.swing.JTextField();
+        btnBuscar = new swing.Button();
+        sVGEliminar = new swing.SVGImage();
+        btnEliminar = new swing.Button();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblVuelos = new javax.swing.JTable();
+        btnNuevo = new swing.Button();
+        sVGEditar = new swing.SVGImage();
+        btnEditar = new swing.Button();
+
+        setBackground(new java.awt.Color(214, 221, 230));
+        setPreferredSize(new java.awt.Dimension(630, 510));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setText("Buscar por:");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 17, -1, -1));
+
+        cbBuscarPor.setBackground(new java.awt.Color(214, 221, 230));
+        cbBuscarPor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Destino", "Origen", "Numero", "Aerolinea" }));
+        cbBuscarPor.addActionListener(this::cbBuscarPorActionPerformed);
+        add(cbBuscarPor, new org.netbeans.lib.awtextra.AbsoluteConstraints(82, 15, 122, -1));
+
+        txtBuscar.setBackground(new java.awt.Color(255, 255, 255));
+        add(txtBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(216, 6, 153, 35));
+
+        btnBuscar.setForeground(new java.awt.Color(255, 255, 255));
+        btnBuscar.setText("Buscar");
+        add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(381, 7, 109, -1));
+        add(sVGEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 470, 20, 20));
+
+        btnEliminar.setForeground(new java.awt.Color(255, 255, 255));
+        btnEliminar.setText("     Eliminar");
+        btnEliminar.setToolTipText("");
+        add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(125, 464, 100, -1));
+
+        tblVuelos.setBackground(new java.awt.Color(244, 245, 249));
+        tblVuelos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "ID", "Numero", "Aerolinea", "Origen", "Destino", "Fecha", "Hora", "Precio"
+            }
+        ));
+        jScrollPane1.setViewportView(tblVuelos);
+
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 53, 630, 405));
+
+        btnNuevo.setForeground(new java.awt.Color(255, 255, 255));
+        btnNuevo.setText("Nuevo");
+        add(btnNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(544, 7, 80, -1));
+        add(sVGEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 470, 20, 20));
+
+        btnEditar.setForeground(new java.awt.Color(255, 255, 255));
+        btnEditar.setText("    Editar");
+        btnEditar.setToolTipText("");
+        add(btnEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 464, 100, -1));
     }// </editor-fold>//GEN-END:initComponents
+
+    private void cbBuscarPorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbBuscarPorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbBuscarPorActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private swing.Button btnBuscar;
+    private swing.Button btnEditar;
+    private swing.Button btnEliminar;
+    private swing.Button btnNuevo;
+    private javax.swing.JComboBox<String> cbBuscarPor;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private swing.SVGImage sVGEditar;
+    private swing.SVGImage sVGEliminar;
+    private javax.swing.JTable tblVuelos;
+    private javax.swing.JTextField txtBuscar;
     // End of variables declaration//GEN-END:variables
 }
