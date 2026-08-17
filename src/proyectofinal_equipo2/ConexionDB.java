@@ -1,4 +1,12 @@
+<<<<<<< HEAD:src/proyectofinal_equipo2/ConexionDB.java
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package proyectofinal_equipo2;
+=======
 package proyectofinal_equipo2.BaseDeDatos;
+>>>>>>> 7e7fc938654fda779ff3ac1bafffb577448a8cfb:src/proyectofinal_equipo2/BaseDeDatos/ConexionDB.java
 
 import java.sql.Connection;
 import java.sql.DriverManager;
