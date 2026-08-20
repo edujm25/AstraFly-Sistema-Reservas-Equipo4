@@ -80,9 +80,9 @@ ProyectoFinal-Equipo2/
 ### Uso de la aplicación
 
 #### 1. Registro de usuario
-- En la pantalla de inicio, haz clic en **"Registrarse"**.
-- Completa los campos: nombre y apellido, documento (cédula/pasaporte), correo, número telefónico y contraseña.
-- Presiona **"Crear cuenta"**.
+- Comunícate con el administrador
+- El administrador Completara los campos: nombre y apellido, documento (cédula/pasaporte), correo, número telefónico y contraseña.
+
 
 #### 2. Inicio de sesión
 - Ingresa tu correo (o usuario) y contraseña en la pantalla de **Login**.
