@@ -117,4 +117,4 @@ Instituto Tecnológico de las Américas (ITLA) · 2026
 
 ---
 
-<p align="center">Hecho con ✈️ por el Equipo 2</p>
+<p align="center">Hecho con ✈️ por el Equipo 4</p>
