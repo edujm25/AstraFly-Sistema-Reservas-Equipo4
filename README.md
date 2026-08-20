@@ -77,6 +77,26 @@ ProyectoFinal-Equipo2/
 5. Asegúrate de que todas las librerías del directorio `Libraries` estén correctamente referenciadas en el proyecto.
 6. Ejecuta la clase `Main.java` para iniciar la aplicación.
 
+### Uso de la aplicación
+
+#### 1. Registro de usuario
+- En la pantalla de inicio, haz clic en **"Registrarse"**.
+- Completa los campos: nombre y apellido, documento (cédula/pasaporte), correo, número telefónico y contraseña.
+- Presiona **"Crear cuenta"**.
+
+#### 2. Inicio de sesión
+- Ingresa tu correo (o usuario) y contraseña en la pantalla de **Login**.
+- Presiona **"Iniciar sesión"**.
+
+#### 3. Búsqueda y reserva de vuelos
+- Desde el **Menú principal**, selecciona **"Buscar vuelos"**.
+- Filtra por origen, destino y fecha de salida.
+- Selecciona el vuelo deseado y confirma tu reserva.
+
+#### 4. Gestión de reservas
+- En la sección **"Mis reservas"** puedes ver, modificar o cancelar tus vuelos reservados.
+
+
 ## 👥 Autores
 
 - **Edwis Jimenez Mercedes** — [edujm25](https://github.com/edujm25)
