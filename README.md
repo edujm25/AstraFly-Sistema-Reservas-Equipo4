@@ -1,4 +1,4 @@
-![Logo de AstraFly](src/vista/imagenes)
+![Logo de AstraFly](src/vista/imagenes/AstraFlyIconInSVG(1).svg)
 
 # ✈️ AstraFly
 
