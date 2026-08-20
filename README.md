@@ -1,3 +1,5 @@
+![Logo de AstraFly](src/vista/imagenes)
+
 # ✈️ AstraFly
 
 **Sistema de Reservas de Vuelos** — Aplicación de escritorio para la gestión administrativa de vuelos, reservas y usuarios.
