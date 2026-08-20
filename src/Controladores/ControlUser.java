@@ -1,32 +1,23 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Controladores;
-import Modelos.Reservas;
-import Modelos.ReservasDAO;
-import vista.PanelesAdmin.PanelReservasAdmin;
-import vista.PanelesAdmin.ventanas.DialogReservas;
+
+import Modelos.User;
+import Modelos.UserDAO;
+import vista.PanelesAdmin.PanelUsuariosAdmin;
+import vista.PanelesAdmin.ventanas.DialogUsuarios;
 
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
-import vista.PanelesAdmin.PanelUsuariosAdmin;
-import Modelos.UserDAO;
 
 /**
+ * Controlador del panel de Usuarios.
  *
- * @author shing
+ * @author Edwis Jimenez
  */
-public class ControlUser implements ActionListener  {
-    
-
-
-    private static final DateTimeFormatter FORMATO_FECHA = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+public class ControlUser implements ActionListener {
 
     UserDAO dao = new UserDAO();
     PanelUsuariosAdmin vista;
@@ -39,18 +30,22 @@ public class ControlUser implements ActionListener  {
         listar();
 
         this.vista.getBtnEditar().setEnabled(false);
+        this.vista.getBtnEliminar().setEnabled(false);
 
-        this.vista.getTblReservas().getSelectionModel().addListSelectionListener(e -> {
-            boolean haySeleccion = vista.getTblReservas().getSelectedRow() != -1;
+        this.vista.getTblUsuarios().getSelectionModel().addListSelectionListener(e -> {
+            boolean haySeleccion = vista.getTblUsuarios().getSelectedRow() != -1;
             vista.getBtnEditar().setEnabled(haySeleccion);
+            vista.getBtnEliminar().setEnabled(haySeleccion);
         });
 
+        this.vista.getBtnNuevo().addActionListener(this);
         this.vista.getBtnEditar().addActionListener(this);
+        this.vista.getBtnEliminar().addActionListener(this);
         this.vista.getBtnBuscar().addActionListener(this);
     }
 
     private void configurarTabla() {
-        String[] columnas = {"ID", "Usuario_id", "Vuelo_id", "Codigo_Reserva", "Nombre_Pasajero", "Fecha_Reserva", "Estado", "Precio_Pagado"};
+        String[] columnas = {"ID", "Usuario", "Nombre", "Pasaporte", "Correo ", "Numero_Telefono"};
         modelo = new DefaultTableModel(columnas, 0) {
             @Override
             public boolean isCellEditable(int row, int column) {
@@ -70,30 +65,21 @@ public class ControlUser implements ActionListener  {
             listar();
             return;
         }
-
-       // String columna;
-       // switch ((String) vista.getCbBuscarPor().getSelectedItem()) {
-       //     case "Codigo":   columna = "codigo";   break;
-       //     case "Pasajero": columna = "pasajero"; break;
-       //     case "Estado":   columna = "estado";   break;
-        //    default:         columna = "codigo";
-       // }
-
-        mostrarEnTabla(dao.buscarPorColumna(columna, texto));
+        // El panel no tiene un combo para elegir la columna,
+        // asi que se busca en varias columnas a la vez.
+        mostrarEnTabla(dao.buscarGeneral(texto));
     }
 
-    private void mostrarEnTabla(List<Reservas> reservas) {
+    private void mostrarEnTabla(List<User> usuarios) {
         limpiarTabla();
-        for (Reservas r : reservas) {
+        for (User u : usuarios) {
             modelo.addRow(new Object[]{
-                    r.getId(),
-                    r.getIdUsuario(),
-                    r.getIdVuelo(),
-                    r.getCodigoReserva(),
-                    r.getNombrePasajero(),
-                    r.getFechaReserva() != null ? r.getFechaReserva().format(FORMATO_FECHA) : "",
-                    r.getEstado(),
-                    r.getPrecioPagado()
+                    u.getId(),
+                    u.getNombreUsuario(),
+                    u.getNombreApellido(),
+                    u.getDocumentoCedulaPasaporte(),
+                    u.getCorreo(),
+                    u.getNumeroTelefonico()
             });
         }
     }
@@ -102,44 +88,90 @@ public class ControlUser implements ActionListener  {
         modelo.setRowCount(0);
     }
 
+    public void agregar() {
+        DialogUsuarios dialogo = new DialogUsuarios(
+                (java.awt.Frame) SwingUtilities.getWindowAncestor(vista), true);
+        dialogo.setUsuario(null);
+        dialogo.setVisible(true);
+
+        if (dialogo.isGuardado()) {
+            User nuevo = dialogo.getUsuario();
+            int r = dao.agregar(nuevo);
+            if (r == 1) {
+                JOptionPane.showMessageDialog(vista, "Usuario agregado con exito!", "Exito!", JOptionPane.INFORMATION_MESSAGE);
+                listar();
+            } else {
+                JOptionPane.showMessageDialog(vista, "Error: tratando de agregar el usuario.\nVerifica que el usuario, correo, documento y telefono no esten ya registrados.", "Error!", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }
+
     public void editar() {
-        int fila = vista.getTblReservas().getSelectedRow();
+        int fila = vista.getTblUsuarios().getSelectedRow();
 
         if (fila == -1) {
             JOptionPane.showMessageDialog(vista, "Debe seleccionar una fila para la edicion.", "Error!", JOptionPane.ERROR_MESSAGE);
             return;
         }
 
-        int id = (int) vista.getTblReservas().getValueAt(fila, 0);
-        Reservas reserva = dao.buscarPorId(id);
+        int id = (int) vista.getTblUsuarios().getValueAt(fila, 0);
+        User usuario = dao.buscarPorId(id);
 
-        if (reserva == null) {
-            JOptionPane.showMessageDialog(vista, "Esa reserva ya no existe.", "Error!", JOptionPane.ERROR_MESSAGE);
+        if (usuario == null) {
+            JOptionPane.showMessageDialog(vista, "Ese usuario ya no existe.", "Error!", JOptionPane.ERROR_MESSAGE);
             listar();
             return;
         }
 
-        DialogReservas dialogo = new DialogReservas(
+        DialogUsuarios dialogo = new DialogUsuarios(
                 (java.awt.Frame) SwingUtilities.getWindowAncestor(vista), true);
-        dialogo.setReserva(reserva);
+        dialogo.setUsuario(usuario);
         dialogo.setVisible(true);
 
         if (dialogo.isGuardado()) {
-            Reservas editada = dialogo.getReserva();
-            int r = dao.actualizar(editada);
+            User editado = dialogo.getUsuario();
+            int r = dao.actualizar(editado);
             if (r == 1) {
-                JOptionPane.showMessageDialog(vista, "Reserva actualizada con exito!", "Exito!", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(vista, "Usuario actualizado con exito!", "Exito!", JOptionPane.INFORMATION_MESSAGE);
                 listar();
             } else {
-                JOptionPane.showMessageDialog(vista, "Error: tratando de actualizar la reserva.", "Error!", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(vista, "Error: tratando de actualizar el usuario.", "Error!", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }
+
+    public void eliminar() {
+        int fila = vista.getTblUsuarios().getSelectedRow();
+
+        if (fila == -1) {
+            JOptionPane.showMessageDialog(vista, "Debe seleccionar una fila a borrar.", "Error!", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        int id = (int) vista.getTblUsuarios().getValueAt(fila, 0);
+        String nombreUsuario = (String) vista.getTblUsuarios().getValueAt(fila, 1);
+
+        if (JOptionPane.showConfirmDialog(vista, "Esta seguro de eliminar el usuario " + nombreUsuario + "?", "Borrar", JOptionPane.YES_NO_OPTION) == 0) {
+            int r = dao.eliminar(id);
+            if (r == 1) {
+                JOptionPane.showMessageDialog(vista, "Usuario eliminado con exito!", "Exito!", JOptionPane.INFORMATION_MESSAGE);
+                listar();
+            } else {
+                JOptionPane.showMessageDialog(vista, "Error: tratando de eliminar el usuario.", "Error!", JOptionPane.ERROR_MESSAGE);
             }
         }
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == vista.getBtnNuevo()) {
+            agregar();
+        }
         if (e.getSource() == vista.getBtnEditar()) {
             editar();
+        }
+        if (e.getSource() == vista.getBtnEliminar()) {
+            eliminar();
         }
         if (e.getSource() == vista.getBtnBuscar()) {
             listarRegistro();

@@ -1,45 +1,40 @@
 package vista.PanelesAdmin.ventanas;
 
-import Modelos.Vuelo;
+import Modelos.User;
  
 import javax.swing.*;
 import java.awt.*;
-import java.math.BigDecimal;
-import java.time.LocalDate;
-import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
+import java.util.regex.Pattern;
 
 /**
  *
  * @author Edwis Jimenez
  */
-public class DialogVuelo extends javax.swing.JDialog {
-    private static final DateTimeFormatter FORMATO_FECHA = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-    private static final DateTimeFormatter FORMATO_HORA = DateTimeFormatter.ofPattern("HH:mm");
+public class DialogUsuarios extends javax.swing.JDialog {
+    private static final Pattern PATRON_CORREO = Pattern.compile("^[\\w.+-]+@[\\w-]+\\.[a-zA-Z]{2,}$");
      
     private boolean guardado = false;
     private int idEdicion = 0;
     
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(DialogVuelo.class.getName());
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(DialogUsuarios.class.getName());
 
     /**
      * Creates new form DialogVuelo
      */
-    public DialogVuelo(java.awt.Frame parent, boolean modal) {
+    public DialogUsuarios(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         
-        //Se le asigna color y forma a los botones
+        // Asignar Color y forma a los botones
         btnGuardar.setArc(10);
         btnGuardar.setBackground(new Color(7, 122, 61, 255));
         
         btnCancelar.setArc(10);
         btnCancelar.setBackground(new Color(204, 65, 56, 255));
         
-        this.setLocationRelativeTo(parent); // Ubicacion central al padre de la vista
+        this.setLocationRelativeTo(parent);// Ubicacion central al padrede la vista
         
-        // Evitar edicion del Id
+        //Evitar la edicion del id
         txtId.setEnabled(false);
         
         
@@ -49,40 +44,40 @@ public class DialogVuelo extends javax.swing.JDialog {
     }
     
     /**
-     * Carga los datos del vuelo en el formulario. Si v es null, prepara
-     * el dialogo para registrar un vuelo nuevo.
+     * Carga los datos del usuario en el formulario. Si u es null, prepara
+     * el dialogo para registrar un usuario nuevo.
      */
-    public void setVuelo(Vuelo v) {
-        if (v == null) {
+    public void setUsuario(User u) {
+        if (u == null) {
             idEdicion = 0;
-            setTitle("Nuevo Vuelo");
-            //limpiarCampos();
+            setTitle("Nuevo Usuario");
+            limpiarCampos();
             return;
         }
  
-        idEdicion = v.getId();
-        setTitle("Editar Vuelo");
-        
-        txtId.setText(String.valueOf(v.getId()));
-        txtNumeroVuelo.setText(v.getNumeroVuelo());
-        txtAerolinea.setText(v.getAerolinea());
-        txtOrigen.setText(v.getOrigen());
-        txtDestino.setText(v.getDestino());
-        txtFecha.setText(v.getFecha().format(FORMATO_FECHA));
-        txtHora.setText(v.getHora().format(FORMATO_HORA));
-        txtPrecio.setText(v.getPrecio().toString());
+        idEdicion = u.getId();
+        setTitle("Editar Usuario");
+ 
+        txtId.setText(String.valueOf(u.getId()));
+        txtNombre.setText(u.getNombreUsuario());
+        txtApellido.setText(u.getNombreApellido());
+        txtPasaporte.setText(u.getDocumentoCedulaPasaporte());
+        txtCorreo.setText(u.getCorreo());
+        txtTelefono.setText(u.getNumeroTelefonico());
+        // La contrasena NUNCA se precarga por seguridad. Si el campo se
+        // deja vacio al editar, ControlUsuarios/UserDAO no la modifican.
+        txtContrasena.setText("");
     }
     
-    // Limpia todos los campos de la vista
+    // Limpia todos los campos de la  vista
     private void limpiarCampos() {
         txtId.setText("");
-        txtNumeroVuelo.setText("");
-        txtAerolinea.setText("");
-        txtOrigen.setText("");
-        txtDestino.setText("");
-        txtFecha.setText("");
-        txtHora.setText("");
-        txtPrecio.setText("");
+        txtNombre.setText("");
+        txtApellido.setText("");
+        txtPasaporte.setText("");
+        txtCorreo.setText("");
+        txtTelefono.setText("");
+        txtContrasena.setText("");
     }
     
     // Metodo que devuelve el estado actual de guardado
@@ -90,58 +85,71 @@ public class DialogVuelo extends javax.swing.JDialog {
         return guardado;
     }
     
-    // Se crea un objeto tipo Vuelo y se le asigna los datos de los campos y se devuelve
-    public Vuelo getVuelo() {
-        Vuelo v = new Vuelo();
-        v.setId(idEdicion);
-        v.setNumeroVuelo(txtNumeroVuelo.getText().trim());
-        v.setAerolinea(txtAerolinea.getText().trim());
-        v.setOrigen(txtOrigen.getText().trim());
-        v.setDestino(txtDestino.getText().trim());
-        v.setFecha(LocalDate.parse(txtFecha.getText().trim(), FORMATO_FECHA));
-        v.setHora(LocalTime.parse(txtHora.getText().trim(), FORMATO_HORA));
-        v.setPrecio(new BigDecimal(txtPrecio.getText().trim()));
-        return v;
+    // Se crea un objeto tipo usuario se le asigna los datos de los campos y se devuelve
+    public User getUsuario() {
+        User u = new User();
+        u.setId(idEdicion);
+        u.setNombreUsuario(txtNombre.getText().trim());
+        u.setNombreApellido(txtApellido.getText().trim());
+        u.setDocumentoCedulaPasaporte(txtPasaporte.getText().trim());
+        u.setCorreo(txtCorreo.getText().trim());
+        u.setNumeroTelefonico(txtTelefono.getText().trim());
+        u.setContrasena(new String(txtContrasena.getText()).trim());
+        return u;
     }
     
-    /* Evento que valida que los campos no esten vacios y que se cumplen todos
-    * los patrones y corre al clickear guardar.
-    */  
+    // Evento que valida que los campos no esten vacios y corre al guardar
     private void onGuardar() {
-        if (txtNumeroVuelo.getText().trim().isEmpty()
-                || txtAerolinea.getText().trim().isEmpty()
-                || txtOrigen.getText().trim().isEmpty()
-                || txtDestino.getText().trim().isEmpty()) {
+        if (txtNombre.getText().trim().isEmpty()
+                || txtApellido.getText().trim().isEmpty()
+                || txtPasaporte.getText().trim().isEmpty()
+                || txtCorreo.getText().trim().isEmpty()
+                || txtTelefono.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(this,
-                    "Completa todos los campos de texto.",
+                    "Completa todos los campos.",
+                    "Datos incompletos", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        // Validacion de que todos los patrones textuales se cumplen \\
+        if (!PATRON_CORREO.matcher(txtCorreo.getText().trim()).matches()) {
+            JOptionPane.showMessageDialog(this,
+                    "El correo no tiene un formato valido.\nEjemplo: usuario@correo.com",
+                    "Correo invalido", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+ 
+        if (!txtTelefono.getText().trim().matches("[0-9+()\\-\\s]{7,15}")) {
+            JOptionPane.showMessageDialog(this,
+                    "El telefono debe tener entre 7 y 15 digitos.",
+                    "Telefono invalido", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        if (!txtPasaporte.getText().trim().matches("^[A-Z]{2}[0-9]{7}$")) {
+            JOptionPane.showMessageDialog(this,
+                    "El pasaporte debe tener entre 8 y 9 Caracteres.",
+                    "Pasaporte invalido", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        
+        String clave = new String(txtContrasena.getText()).trim(); // Se guarda la clave en una variable
+        boolean esNuevo = idEdicion == 0;
+ 
+        // En un registro nuevo la contrasena es obligatoria.
+        // Al editar, puede dejarse vacia para no cambiarla.
+        if (esNuevo && clave.isEmpty()) {
+            JOptionPane.showMessageDialog(this,
+                    "Debes ingresar una contrasena.",
                     "Datos incompletos", JOptionPane.WARNING_MESSAGE);
             return;
         }
  
-        try {
-            LocalDate.parse(txtFecha.getText().trim(), FORMATO_FECHA);
-        } catch (DateTimeParseException ex) {
+        if (!clave.isEmpty() && clave.length() < 6) {
             JOptionPane.showMessageDialog(this,
-                    "La fecha debe tener el formato dd/MM/yyyy\nEjemplo: 25/12/2026",
-                    "Fecha invalida", JOptionPane.WARNING_MESSAGE);
-            return;
-        }
- 
-        try {
-            LocalTime.parse(txtHora.getText().trim(), FORMATO_HORA);
-        } catch (DateTimeParseException ex) {
-            JOptionPane.showMessageDialog(this,
-                    "La hora debe tener el formato HH:mm\nEjemplo: 14:30",
-                    "Hora invalida", JOptionPane.WARNING_MESSAGE);
-            return;
-        }
- 
-        try {
-            new BigDecimal(txtPrecio.getText().trim());
-        } catch (NumberFormatException ex) {
-            JOptionPane.showMessageDialog(this,
-                    "El precio debe ser un numero (ejemplo: 450.00).",
-                    "Dato invalido", JOptionPane.WARNING_MESSAGE);
+                    "La contrasena debe tener al menos 6 caracteres.",
+                    "Contrasena invalida", JOptionPane.WARNING_MESSAGE);
             return;
         }
  
@@ -149,7 +157,7 @@ public class DialogVuelo extends javax.swing.JDialog {
         dispose();
     }
     
-    // Evento al darle click a cancelar no guarda nada y cierra la ventana   
+    // Evento al darle click a cancelar no guarda nada y libera la ventana
     private void onCancelar() {
         guardado = false;
         dispose();
@@ -168,21 +176,19 @@ public class DialogVuelo extends javax.swing.JDialog {
         jLabel1 = new javax.swing.JLabel();
         txtId = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        txtNumeroVuelo = new javax.swing.JTextField();
+        txtNombre = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        txtAerolinea = new javax.swing.JTextField();
+        txtApellido = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        txtOrigen = new javax.swing.JTextField();
+        txtPasaporte = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        txtDestino = new javax.swing.JTextField();
-        txtFecha = new javax.swing.JTextField();
+        txtCorreo = new javax.swing.JTextField();
+        txtTelefono = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        txtHora = new javax.swing.JTextField();
         btnGuardar = new swing.Button();
         btnCancelar = new swing.Button();
-        txtPrecio = new javax.swing.JTextField();
-        jLabel9 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        txtContrasena = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -197,39 +203,34 @@ public class DialogVuelo extends javax.swing.JDialog {
 
         jLabel2.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel2.setText("Numero:");
+        jLabel2.setText("Usuario:");
 
-        txtNumeroVuelo.setBackground(new java.awt.Color(255, 255, 255));
+        txtNombre.setBackground(new java.awt.Color(255, 255, 255));
+        txtNombre.addActionListener(this::txtNombreActionPerformed);
 
         jLabel3.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel3.setText("Aerolinea:");
+        jLabel3.setText("Nombre_Completo:");
 
-        txtAerolinea.setBackground(new java.awt.Color(255, 255, 255));
+        txtApellido.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel4.setText("Origen:");
+        jLabel4.setText("Pasaporte:");
 
-        txtOrigen.setBackground(new java.awt.Color(255, 255, 255));
+        txtPasaporte.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel5.setText("Destino:");
+        jLabel5.setText("Correo:");
 
-        txtDestino.setBackground(new java.awt.Color(255, 255, 255));
+        txtCorreo.setBackground(new java.awt.Color(255, 255, 255));
 
-        txtFecha.setBackground(new java.awt.Color(255, 255, 255));
+        txtTelefono.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel6.setText("Fecha:");
-
-        jLabel7.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel7.setText("Hora:");
-
-        txtHora.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("Telefono:");
 
         btnGuardar.setForeground(new java.awt.Color(255, 255, 255));
         btnGuardar.setText("Guardar");
@@ -237,45 +238,47 @@ public class DialogVuelo extends javax.swing.JDialog {
         btnCancelar.setForeground(new java.awt.Color(255, 255, 255));
         btnCancelar.setText("Cancelar");
 
-        txtPrecio.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel7.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel7.setText("Contraseña:");
 
-        jLabel9.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel9.setText("Precio:");
+        txtContrasena.setBackground(new java.awt.Color(255, 255, 255));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel7)
-                    .addComponent(jLabel9)
-                    .addComponent(jLabel1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(txtHora, javax.swing.GroupLayout.DEFAULT_SIZE, 226, Short.MAX_VALUE)
-                        .addComponent(txtFecha)
-                        .addComponent(txtDestino)
-                        .addComponent(txtOrigen)
-                        .addComponent(txtNumeroVuelo)
-                        .addComponent(txtAerolinea)))
-                .addContainerGap(73, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(42, 42, 42)
                 .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(46, 46, 46))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel7)
+                        .addGap(17, 17, 17)
+                        .addComponent(txtContrasena))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel1))
+                        .addGap(17, 17, 17)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(txtTelefono, javax.swing.GroupLayout.DEFAULT_SIZE, 226, Short.MAX_VALUE)
+                                .addComponent(txtCorreo)
+                                .addComponent(txtPasaporte)
+                                .addComponent(txtNombre)
+                                .addComponent(txtApellido)))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -287,36 +290,32 @@ public class DialogVuelo extends javax.swing.JDialog {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(txtNumeroVuelo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(txtAerolinea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(txtOrigen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtPasaporte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(txtDestino, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(txtHora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
-                    .addComponent(txtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(txtContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(60, 60, 60)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(8, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -332,6 +331,10 @@ public class DialogVuelo extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNombreActionPerformed
 
     /**
      * @param args the command line arguments
@@ -358,7 +361,7 @@ public class DialogVuelo extends javax.swing.JDialog {
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                DialogVuelo dialog = new DialogVuelo(new javax.swing.JFrame(), true);
+                DialogUsuarios dialog = new DialogUsuarios(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -382,15 +385,13 @@ public class DialogVuelo extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField txtAerolinea;
-    private javax.swing.JTextField txtDestino;
-    private javax.swing.JTextField txtFecha;
-    private javax.swing.JTextField txtHora;
+    private javax.swing.JTextField txtApellido;
+    private javax.swing.JTextField txtContrasena;
+    private javax.swing.JTextField txtCorreo;
     private javax.swing.JTextField txtId;
-    private javax.swing.JTextField txtNumeroVuelo;
-    private javax.swing.JTextField txtOrigen;
-    private javax.swing.JTextField txtPrecio;
+    private javax.swing.JTextField txtNombre;
+    private javax.swing.JTextField txtPasaporte;
+    private javax.swing.JTextField txtTelefono;
     // End of variables declaration//GEN-END:variables
 }

@@ -12,10 +12,13 @@ import java.util.ArrayList;
  * @author Edwis Jimenez
  */
 public class ReservasDAO {
+    
+    // Variables necesarias para la conexion con la base datos
     Connection con;
     PreparedStatement ps;
     ResultSet rs;
     
+    // Metodo con switch que corre dependiendo de la columna que requiera buscar el usuario
     public List<Reservas> buscarPorColumna(String columna, String valorBuscar) {
         String columnaSql;
         switch (columna) {
@@ -40,6 +43,7 @@ public class ReservasDAO {
         return datos;
     }
     
+    // Metodo que lista todos los datos y los organiza para la tabla
     public List<Reservas> listar() {
         String sql = "SELECT * FROM vueloreservas ORDER BY fecha_reserva";
         List<Reservas> datos = new ArrayList();
@@ -54,6 +58,7 @@ public class ReservasDAO {
         return datos;
     }
     
+    // Metodo para buscar datos por Id
     public Reservas buscarPorId(int id) {
         String sql = "SELECT * FROM vueloreservas WHERE id = ?";
         try {
@@ -68,6 +73,7 @@ public class ReservasDAO {
         return null;
     }
     
+    // Metodo para insertar datos nuevos en la tabla de la base de datos tomando los datos de la vista como parametro
     public int agregar(Reservas r) {
         int res = 0;
         String sql = "INSERT INTO vueloreservas (usuario_id, vuelo_id, codigo_reserva, nombre_pasajero, "
@@ -88,6 +94,7 @@ public class ReservasDAO {
         return (res == 1) ? 1 : 0;
     }
     
+    // Metodo para actualizar los datos en la tabla de la base de datos tomando los datos de la vista como parametro    
     public int actualizar(Reservas r) {
         int res = 0;
         String sql = "UPDATE vueloreservas SET usuario_id=?, vuelo_id=?, codigo_reserva=?, nombre_pasajero=?, "
@@ -109,7 +116,8 @@ public class ReservasDAO {
         }
         return res;
     }
-
+    
+    // Busca y elimina en la base de datos con el id indicado
     public int eliminar(int id) {
         int res = 0;
         String sql = "DELETE FROM vueloreservas WHERE id=?";
@@ -125,6 +133,7 @@ public class ReservasDAO {
         return res;
     }
     
+    // Convierte la fila actual del ResultSet en un objeto Reservas.
     private Reservas mapearReserva(ResultSet rs) throws SQLException {
         Reservas r = new Reservas();
         r.setId(rs.getInt("id"));

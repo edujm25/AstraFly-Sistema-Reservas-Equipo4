@@ -1,5 +1,7 @@
 package vista;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Edwis Jimenez
@@ -12,120 +14,208 @@ public class Menu extends javax.swing.JFrame {
      * Creates new form Menu
      */
     public Menu() {
-        //Se inicializan los componentes
+        // Se inicializan los componentes
         initComponents();
+        inicio.setImage("/vista/imagenes/AdminAFMenuImage.png");//se le asigna una imagen al menu de inicio
+        setIconImage(new javax.swing.ImageIcon(getClass().getResource("/vista/imagenes/AFAppIcon.png")).getImage());
+        setTitle("AstraFly 1.0.0");
         
-        //Se agregan los diferentes frames del programa 
+        // Se agregan los diferentes frames del programa al cardLayout
         contentPanel.add(new vista.PanelesAdmin.PanelReservasAdmin(), "Administrar Reservas");
         contentPanel.add(new vista.PanelesAdmin.PanelUsuariosAdmin(), "Administrar Usuarios");
         contentPanel.add(new vista.PanelesAdmin.PanelVuelosAdmin(), "Administrar Vuelos");
         contentPanel.add(new vista.PanelAcercaDe(), "Acerca De");
         
         java.awt.CardLayout cardLayout = (java.awt.CardLayout) contentPanel.getLayout();
- 
+        
+        // Listener que espera click en el icono de vuelos y abre su layout correspondiente
         sVGVuelos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         sVGVuelos.addMouseListener(new java.awt.event.MouseAdapter() {
             @Override
             public void mouseClicked(java.awt.event.MouseEvent e) {
                 cardLayout.show(contentPanel, "Administrar Vuelos");
+                lblSectionTxt.setText("Administrar Vuelos");
+                
+                selectFrVuelos.setVisible(true);
+                selectFrReservas.setVisible(false);
+                selectFrUsuarios.setVisible(false);
+                selectFrAcercaDe.setVisible(false);
             }
         });
-        jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+        
+        // Listener que espera click en el label de vuelos y abre su layout correspondiente
+        lblVuelos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblVuelos.addMouseListener(new java.awt.event.MouseAdapter() {
             @Override
             public void mouseClicked(java.awt.event.MouseEvent e) {
                 cardLayout.show(contentPanel, "Administrar Vuelos");
+                lblSectionTxt.setText("Administrar Vuelos");
+                
+                selectFrVuelos.setVisible(true);
+                selectFrReservas.setVisible(false);
+                selectFrUsuarios.setVisible(false);
+                selectFrAcercaDe.setVisible(false);
             }
         });
- 
+        
+        // Listener que espera click en el icono de reservas y abre su layout correspondiente
         sVGReservasEdit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         sVGReservasEdit.addMouseListener(new java.awt.event.MouseAdapter() {
             @Override
             public void mouseClicked(java.awt.event.MouseEvent e) {
                 cardLayout.show(contentPanel, "Administrar Reservas");
+                lblSectionTxt.setText("Administrar Reservas");
+                
+                selectFrVuelos.setVisible(false);
+                selectFrReservas.setVisible(true);
+                selectFrUsuarios.setVisible(false);
+                selectFrAcercaDe.setVisible(false);
             }
         });
-        jLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+        
+        // Listener que espera click en el label de vuelos y abre su layout correspondiente
+        lblReservas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblReservas.addMouseListener(new java.awt.event.MouseAdapter() {
             @Override
             public void mouseClicked(java.awt.event.MouseEvent e) {
                 cardLayout.show(contentPanel, "Administrar Reservas");
+                lblSectionTxt.setText("Administrar Reservas");
+                
+                selectFrVuelos.setVisible(false);
+                selectFrReservas.setVisible(true);
+                selectFrUsuarios.setVisible(false);
+                selectFrAcercaDe.setVisible(false);
             }
         });
- 
+        
+        // Listener que espera click en el icono de usuarios y abre su layout correspondiente
         sVGUsuarios.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         sVGUsuarios.addMouseListener(new java.awt.event.MouseAdapter() {
             @Override
             public void mouseClicked(java.awt.event.MouseEvent e) {
                 cardLayout.show(contentPanel, "Administrar Usuarios");
+                lblSectionTxt.setText("Administrar Usuarios");
+                
+                selectFrVuelos.setVisible(false);
+                selectFrReservas.setVisible(false);
+                selectFrUsuarios.setVisible(true);
+                selectFrAcercaDe.setVisible(false);
             }
         });
-        jLabel5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
+        
+        // Listener que espera click en el label de usuarios y abre su layout correspondiente
+        lblUsuarios.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblUsuarios.addMouseListener(new java.awt.event.MouseAdapter() {
             @Override
             public void mouseClicked(java.awt.event.MouseEvent e) {
                 cardLayout.show(contentPanel, "Administrar Usuarios");
+                lblSectionTxt.setText("Administrar Usuarios");
+                
+                selectFrVuelos.setVisible(false);
+                selectFrReservas.setVisible(false);
+                selectFrUsuarios.setVisible(true);
+                selectFrAcercaDe.setVisible(false);
             }
         });
  
+        // Listener que espera click en el icono de acerca de y abre su layout correspondiente
         sVGAcercaDe.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         sVGAcercaDe.addMouseListener(new java.awt.event.MouseAdapter() {
             @Override
             public void mouseClicked(java.awt.event.MouseEvent e) {
                 cardLayout.show(contentPanel, "Acerca De");
+                lblSectionTxt.setText("Acerca De");
+                
+                selectFrVuelos.setVisible(false);
+                selectFrReservas.setVisible(false);
+                selectFrUsuarios.setVisible(false);
+                selectFrAcercaDe.setVisible(true);
             }
         });
-        jLabel4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+        
+        // Listener que espera click en el label de acerca de y abre su layout correspondiente
+        lblAcercaDe.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblAcercaDe.addMouseListener(new java.awt.event.MouseAdapter() {
             @Override
             public void mouseClicked(java.awt.event.MouseEvent e) {
                 cardLayout.show(contentPanel, "Acerca De");
+                lblSectionTxt.setText("Acerca De");
+                
+                selectFrVuelos.setVisible(false);
+                selectFrReservas.setVisible(false);
+                selectFrUsuarios.setVisible(false);
+                selectFrAcercaDe.setVisible(true);
             }
         });
- 
+        
+        // Listener que espera click en el icono de salir y abre su layout correspondiente
         sVGSalir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         sVGSalir.addMouseListener(new java.awt.event.MouseAdapter() {
             @Override
             public void mouseClicked(java.awt.event.MouseEvent e) {
-                System.exit(0);
+                if (JOptionPane.showConfirmDialog(Menu.this, "¿Está seguro que desea cerrar AstraFly?", "Cerrar", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+                    System.exit(0);
+                }
             }
         });
-        jLabel6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
+        
+        // Listener que espera click en el label de salir y abre su layout correspondiente
+        lblSalir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblSalir.addMouseListener(new java.awt.event.MouseAdapter() {
             @Override
             public void mouseClicked(java.awt.event.MouseEvent e) {
-                System.exit(0);
+                if (JOptionPane.showConfirmDialog(Menu.this, "¿Está seguro que desea cerrar AstraFly?", "Cerrar", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+                    System.exit(0);
+                }
             }
         });
- 
-        // Las tarjetas del home (vuelosPanel3, reservasPanel3, usuariosPanel5)
-        // tambien llevan a su seccion correspondiente al hacerles clic
+        
+        // Listener que espera click en el recuadro de vuelos en el inicio y abre su layout correspondiente
         vuelosPanel3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         vuelosPanel3.addMouseListener(new java.awt.event.MouseAdapter() {
             @Override
             public void mouseClicked(java.awt.event.MouseEvent e) {
                 cardLayout.show(contentPanel, "Administrar Vuelos");
+                lblSectionTxt.setText("Administrar Vuelos");
+                
+                selectFrVuelos.setVisible(true);
+                selectFrReservas.setVisible(false);
+                selectFrUsuarios.setVisible(false);
+                selectFrAcercaDe.setVisible(false);
             }
         });
+        
+        // Listener que espera click en el recuadro de reservas en el inicio y abre su layout correspondiente
         reservasPanel3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         reservasPanel3.addMouseListener(new java.awt.event.MouseAdapter() {
             @Override
             public void mouseClicked(java.awt.event.MouseEvent e) {
                 cardLayout.show(contentPanel, "Administrar Reservas");
+                lblSectionTxt.setText("Administrar Reservas");
+                
+                selectFrVuelos.setVisible(false);
+                selectFrReservas.setVisible(true);
+                selectFrUsuarios.setVisible(false);
+                selectFrAcercaDe.setVisible(false);
             }
         });
+        
+        // Listener que espera click en el recuadro de usuarios en el inicio y abre su layout correspondiente
         usuariosPanel5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         usuariosPanel5.addMouseListener(new java.awt.event.MouseAdapter() {
             @Override
             public void mouseClicked(java.awt.event.MouseEvent e) {
                 cardLayout.show(contentPanel, "Administrar Usuarios");
+                lblSectionTxt.setText("Administrar Usuarios");
+                
+                selectFrVuelos.setVisible(false);
+                selectFrReservas.setVisible(false);
+                selectFrUsuarios.setVisible(true);
+                selectFrAcercaDe.setVisible(false);
             }
         });
 
-        
-        inicio.setImage("/vista/imagenes/AdminAFMenuImage.png");//se le asigna una imagen al menu de inicio
-        
-        //Botones cuadrados del menu de inicio
+        //Blut a recuadros del menu de inicio
         inicio.setBlur(vuelosPanel3);
         inicio.setBlur(reservasPanel3);
         inicio.setBlur(usuariosPanel5);
@@ -144,6 +234,16 @@ public class Menu extends javax.swing.JFrame {
         sVGVuelos5.setSvgImage("vista/imagenes/airplane-svgrepo-com.svg", 60, 60);
         sVGReservas5.setSvgImage("vista/imagenes/calendar-lines-pen-svgrepo-com.svg", 45, 45);
         sVGUsuarios7.setSvgImage("vista/imagenes/users-svgrepo-com.svg", 70, 70);
+        
+        selectFrVuelos.setArc(10);
+        selectFrReservas.setArc(10);
+        selectFrUsuarios.setArc(10);
+        selectFrAcercaDe.setArc(10);
+        
+        selectFrVuelos.setVisible(false);
+        selectFrReservas.setVisible(false);
+        selectFrUsuarios.setVisible(false);
+        selectFrAcercaDe.setVisible(false);
 
     }
 
@@ -161,16 +261,20 @@ public class Menu extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         AstraFlyIcon1 = new swing.SVGImage();
         sVGVuelos = new swing.SVGImage();
-        jLabel1 = new javax.swing.JLabel();
+        lblVuelos = new javax.swing.JLabel();
         sVGReservasEdit = new swing.SVGImage();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        lblReservas = new javax.swing.JLabel();
+        lblAcercaDe = new javax.swing.JLabel();
         sVGAcercaDe = new swing.SVGImage();
         sVGUsuarios = new swing.SVGImage();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        lblUsuarios = new javax.swing.JLabel();
+        lblSalir = new javax.swing.JLabel();
         sVGSalir = new swing.SVGImage();
-        jLabel2 = new javax.swing.JLabel();
+        selectFrAcercaDe = new swing.Button();
+        selectFrVuelos = new swing.Button();
+        selectFrReservas = new swing.Button();
+        selectFrUsuarios = new swing.Button();
+        lblSectionTxt = new javax.swing.JLabel();
         contentPanel = new javax.swing.JPanel();
         inicio = new login.Background();
         jLabel25 = new javax.swing.JLabel();
@@ -201,39 +305,43 @@ public class Menu extends javax.swing.JFrame {
         jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 169, -1));
         jPanel2.add(sVGVuelos, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 96, 32, 50));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Vuelos");
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(57, 107, -1, -1));
+        lblVuelos.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblVuelos.setForeground(new java.awt.Color(255, 255, 255));
+        lblVuelos.setText("Vuelos");
+        jPanel2.add(lblVuelos, new org.netbeans.lib.awtextra.AbsoluteConstraints(57, 107, -1, -1));
         jPanel2.add(sVGReservasEdit, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 164, 33, 50));
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Reservas");
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(58, 175, -1, -1));
+        lblReservas.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblReservas.setForeground(new java.awt.Color(255, 255, 255));
+        lblReservas.setText("Reservas");
+        jPanel2.add(lblReservas, new org.netbeans.lib.awtextra.AbsoluteConstraints(58, 175, -1, -1));
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Acerca de");
-        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(57, 311, -1, -1));
+        lblAcercaDe.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblAcercaDe.setForeground(new java.awt.Color(255, 255, 255));
+        lblAcercaDe.setText("Acerca de");
+        jPanel2.add(lblAcercaDe, new org.netbeans.lib.awtextra.AbsoluteConstraints(57, 311, -1, -1));
         jPanel2.add(sVGAcercaDe, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 300, 32, 50));
         jPanel2.add(sVGUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 232, 32, 50));
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("Usuarios");
-        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(57, 243, -1, -1));
+        lblUsuarios.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblUsuarios.setForeground(new java.awt.Color(255, 255, 255));
+        lblUsuarios.setText("Usuarios");
+        jPanel2.add(lblUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(57, 243, -1, -1));
 
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("Salir");
-        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(57, 380, -1, -1));
+        lblSalir.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblSalir.setForeground(new java.awt.Color(255, 255, 255));
+        lblSalir.setText("Salir");
+        jPanel2.add(lblSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(57, 380, -1, -1));
         jPanel2.add(sVGSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 368, 32, 50));
+        jPanel2.add(selectFrAcercaDe, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, 150, 70));
+        jPanel2.add(selectFrVuelos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 150, 60));
+        jPanel2.add(selectFrReservas, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 150, 60));
+        jPanel2.add(selectFrUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 150, 70));
 
-        jLabel2.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel2.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Menú Principal");
+        lblSectionTxt.setBackground(new java.awt.Color(255, 255, 255));
+        lblSectionTxt.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
+        lblSectionTxt.setForeground(new java.awt.Color(255, 255, 255));
+        lblSectionTxt.setText("Menú Principal");
 
         contentPanel.setOpaque(false);
         contentPanel.setLayout(new java.awt.CardLayout());
@@ -318,7 +426,7 @@ public class Menu extends javax.swing.JFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
+                    .addComponent(lblSectionTxt)
                     .addComponent(contentPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 701, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(23, Short.MAX_VALUE))
         );
@@ -327,7 +435,7 @@ public class Menu extends javax.swing.JFrame {
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel2)
+                .addComponent(lblSectionTxt)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(contentPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 547, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -376,21 +484,21 @@ public class Menu extends javax.swing.JFrame {
     private swing.SVGImage AstraFlyIcon1;
     private javax.swing.JPanel contentPanel;
     private login.Background inicio;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel32;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JLabel lblAcercaDe;
+    private javax.swing.JLabel lblReservas;
+    private javax.swing.JLabel lblSalir;
+    private javax.swing.JLabel lblSectionTxt;
+    private javax.swing.JLabel lblUsuarios;
+    private javax.swing.JLabel lblVuelos;
     private javax.swing.JPanel reservasPanel3;
     private swing.SVGImage sVGAcercaDe;
     private swing.SVGImage sVGReservas5;
@@ -400,6 +508,10 @@ public class Menu extends javax.swing.JFrame {
     private swing.SVGImage sVGUsuarios7;
     private swing.SVGImage sVGVuelos;
     private swing.SVGImage sVGVuelos5;
+    private swing.Button selectFrAcercaDe;
+    private swing.Button selectFrReservas;
+    private swing.Button selectFrUsuarios;
+    private swing.Button selectFrVuelos;
     private javax.swing.JPanel usuariosPanel5;
     private javax.swing.JPanel vuelosPanel3;
     // End of variables declaration//GEN-END:variables
