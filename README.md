@@ -26,16 +26,6 @@ Optimizar la administración de vuelos y reservas mediante una interfaz intuitiv
 - **Autenticación**: sistema de login que restringe el acceso a las funcionalidades principales mediante credenciales.
 - **Búsqueda dinámica**: filtros de búsqueda por distintos criterios (número, código, etc.) en cada módulo.
 
-## 🖼️ Capturas de pantalla
-
-| Login | Vuelos |
-|---|---|
-| Pantalla de inicio de sesión | Administración de vuelos |
-
-| Reservas | Acerca de |
-|---|---|
-| Administración de reservas | Información del sistema |
-
 ## 🏗️ Arquitectura
 
 El proyecto sigue una arquitectura por capas (Modelo - Vista - Controlador):
