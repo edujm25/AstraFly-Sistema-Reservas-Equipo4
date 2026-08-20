@@ -11,15 +11,6 @@ import javax.swing.JTextField;
  * @author Edwis Jimenez
  */
 public class PanelReservasAdmin extends javax.swing.JPanel {
-    
-    public static void main(String[] args) {
-        javax.swing.JFrame frame = new javax.swing.JFrame("Prueba");
-        frame.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
-        frame.add(new PanelReservasAdmin());
-        frame.pack();
-        frame.setLocationRelativeTo(null);
-        frame.setVisible(true);
-    }
 
     /**
      * Creates new form PanelVuelosAdmin
@@ -27,18 +18,19 @@ public class PanelReservasAdmin extends javax.swing.JPanel {
     public PanelReservasAdmin() {
         initComponents();
         
-        //Asignar imagenes a los iconos svg
+        // Asignar imagenes a los iconos svg
         sVGEditar.setSvgImage("vista/imagenes/pen-svgrepo-com.svg", 14, 14);
         sVGEliminar.setSvgImage("vista/imagenes/delete-filled-svgrepo-com.svg", 14, 14);
         sVGEliminar.setVisible(false);
         
-        //configuracion de elementos
+        // Configuracion de elementos
         btnBuscar.setArc(10);
         
         btnEditar.setArc(10);
         new ControlReservas(this);
     }
     
+    //Getters y Setters
     public JTable getTblReservas() {
         return tblReservas;
     }

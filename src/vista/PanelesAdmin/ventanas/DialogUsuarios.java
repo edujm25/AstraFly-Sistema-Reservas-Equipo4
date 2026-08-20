@@ -25,18 +25,20 @@ public class DialogUsuarios extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         
+        // Asignar Color y forma a los botones
         btnGuardar.setArc(10);
         btnGuardar.setBackground(new Color(7, 122, 61, 255));
         
         btnCancelar.setArc(10);
         btnCancelar.setBackground(new Color(204, 65, 56, 255));
         
-        this.setLocationRelativeTo(parent);
+        this.setLocationRelativeTo(parent);// Ubicacion central al padrede la vista
         
+        //Evitar la edicion del id
         txtId.setEnabled(false);
         
         
-        
+        // Listener que espera que se dispare al clickear los botones
         btnGuardar.addActionListener(e -> onGuardar());
         btnCancelar.addActionListener(e -> onCancelar());
     }
@@ -67,6 +69,7 @@ public class DialogUsuarios extends javax.swing.JDialog {
         txtContrasena.setText("");
     }
     
+    // Limpia todos los campos de la  vista
     private void limpiarCampos() {
         txtId.setText("");
         txtNombre.setText("");
@@ -77,10 +80,12 @@ public class DialogUsuarios extends javax.swing.JDialog {
         txtContrasena.setText("");
     }
     
+    // Metodo que devuelve el estado actual de guardado
     public boolean isGuardado() {
         return guardado;
     }
     
+    // Se crea un objeto tipo usuario se le asigna los datos de los campos y se devuelve
     public User getUsuario() {
         User u = new User();
         u.setId(idEdicion);
@@ -93,6 +98,7 @@ public class DialogUsuarios extends javax.swing.JDialog {
         return u;
     }
     
+    // Evento que valida que los campos no esten vacios y corre al guardar
     private void onGuardar() {
         if (txtNombre.getText().trim().isEmpty()
                 || txtApellido.getText().trim().isEmpty()
@@ -104,7 +110,8 @@ public class DialogUsuarios extends javax.swing.JDialog {
                     "Datos incompletos", JOptionPane.WARNING_MESSAGE);
             return;
         }
- 
+        
+        // Validacion de que todos los patrones textuales se cumplen \\
         if (!PATRON_CORREO.matcher(txtCorreo.getText().trim()).matches()) {
             JOptionPane.showMessageDialog(this,
                     "El correo no tiene un formato valido.\nEjemplo: usuario@correo.com",
@@ -119,7 +126,15 @@ public class DialogUsuarios extends javax.swing.JDialog {
             return;
         }
         
-        String clave = new String(txtContrasena.getText()).trim();
+        if (!txtPasaporte.getText().trim().matches("^[A-Z]{2}[0-9]{7}$")) {
+            JOptionPane.showMessageDialog(this,
+                    "El pasaporte debe tener entre 8 y 9 Caracteres.",
+                    "Pasaporte invalido", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        
+        String clave = new String(txtContrasena.getText()).trim(); // Se guarda la clave en una variable
         boolean esNuevo = idEdicion == 0;
  
         // En un registro nuevo la contrasena es obligatoria.
@@ -141,7 +156,8 @@ public class DialogUsuarios extends javax.swing.JDialog {
         guardado = true;
         dispose();
     }
- 
+    
+    // Evento al darle click a cancelar no guarda nada y libera la ventana
     private void onCancelar() {
         guardado = false;
         dispose();
@@ -187,14 +203,14 @@ public class DialogUsuarios extends javax.swing.JDialog {
 
         jLabel2.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel2.setText("Nombre");
+        jLabel2.setText("Usuario:");
 
         txtNombre.setBackground(new java.awt.Color(255, 255, 255));
         txtNombre.addActionListener(this::txtNombreActionPerformed);
 
         jLabel3.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel3.setText("Apellido:");
+        jLabel3.setText("Nombre_Completo:");
 
         txtApellido.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -262,7 +278,7 @@ public class DialogUsuarios extends javax.swing.JDialog {
                                 .addComponent(txtPasaporte)
                                 .addComponent(txtNombre)
                                 .addComponent(txtApellido)))))
-                .addContainerGap(65, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

@@ -30,22 +30,28 @@ public class DialogVuelo extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         
+        //Se le asigna color y forma a los botones
         btnGuardar.setArc(10);
         btnGuardar.setBackground(new Color(7, 122, 61, 255));
         
         btnCancelar.setArc(10);
         btnCancelar.setBackground(new Color(204, 65, 56, 255));
         
-        this.setLocationRelativeTo(parent);
+        this.setLocationRelativeTo(parent); // Ubicacion central al padre de la vista
         
+        // Evitar edicion del Id
         txtId.setEnabled(false);
         
         
-        
+        // Listener que espera que se dispare al clickear los botones
         btnGuardar.addActionListener(e -> onGuardar());
         btnCancelar.addActionListener(e -> onCancelar());
     }
     
+    /**
+     * Carga los datos del vuelo en el formulario. Si v es null, prepara
+     * el dialogo para registrar un vuelo nuevo.
+     */
     public void setVuelo(Vuelo v) {
         if (v == null) {
             idEdicion = 0;
@@ -67,6 +73,7 @@ public class DialogVuelo extends javax.swing.JDialog {
         txtPrecio.setText(v.getPrecio().toString());
     }
     
+    // Limpia todos los campos de la vista
     private void limpiarCampos() {
         txtId.setText("");
         txtNumeroVuelo.setText("");
@@ -78,10 +85,12 @@ public class DialogVuelo extends javax.swing.JDialog {
         txtPrecio.setText("");
     }
     
+    // Metodo que devuelve el estado actual de guardado
     public boolean isGuardado() {
         return guardado;
     }
     
+    // Se crea un objeto tipo Vuelo y se le asigna los datos de los campos y se devuelve
     public Vuelo getVuelo() {
         Vuelo v = new Vuelo();
         v.setId(idEdicion);
@@ -95,6 +104,9 @@ public class DialogVuelo extends javax.swing.JDialog {
         return v;
     }
     
+    /* Evento que valida que los campos no esten vacios y que se cumplen todos
+    * los patrones y corre al clickear guardar.
+    */  
     private void onGuardar() {
         if (txtNumeroVuelo.getText().trim().isEmpty()
                 || txtAerolinea.getText().trim().isEmpty()
@@ -137,6 +149,7 @@ public class DialogVuelo extends javax.swing.JDialog {
         dispose();
     }
     
+    // Evento al darle click a cancelar no guarda nada y cierra la ventana   
     private void onCancelar() {
         guardado = false;
         dispose();

@@ -14,10 +14,10 @@ public class User {
     private String numeroTelefonico;
     private String contrasena;
 
+    //Constructores
     public User() {
     }
 
-    //Constructor
     public User(int id, String nombreUsuario, String nombreApellido, String documentoCedulaPasaporte,
                 String correo, String numeroTelefonico, String contrasena) {
         this.id = id;

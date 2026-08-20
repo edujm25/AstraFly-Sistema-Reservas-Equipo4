@@ -19,10 +19,11 @@ public class Vuelo {
     private LocalTime hora;
     private BigDecimal precio;
  
+    
+    // Constructores
     public Vuelo() {
     }
  
-    // Constructor
     public Vuelo(int id, String numeroVuelo, String aerolinea, String origen, String destino,
                  LocalDate fecha, LocalTime hora, BigDecimal precio) {
         this.id = id;

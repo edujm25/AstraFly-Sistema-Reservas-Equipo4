@@ -10,23 +10,22 @@ public class Login extends javax.swing.JFrame {
     public Login() {
         initComponents();
         this.setLocationRelativeTo(null);
+        
+        //Se Configuran los elementos principales del login
         setIconImage(new javax.swing.ImageIcon(getClass().getResource("/vista/imagenes/AFAppIcon.png")).getImage());
         setTitle("AstraFly - Login");
         background.setBlur(jPanel1);
         btnIngresar.setArc(15);
         
-        // --comprbar si existe una imagen - System.out.println(getClass().getClassLoader().getResource("vista/imagenes/AstraFlyLogo.svg"));
         sVGImageUser.setSvgImage("vista/imagenes/user-svgrepo-com.svg", 25, 25);
         sVGImageLock.setSvgImage("vista/imagenes/lock-svgrepo-com.svg", 25, 25);
         sVGAstraFlyIcon.setSvgImage("vista/imagenes/AstraFlyIconInSVG(1).svg", 200, 150);
-        //setBackground(new Color(0, 0, 0, 0));
         
         lblPasswordVacio.setVisible(false);
         lblUsuarioVacio.setVisible(false);
         lblWrongUser.setVisible(false);
 
         background.setLayout(null);
-        //jPanel1.setSize(jPanel1.getPreferredSize());
 
         background.addComponentListener(new java.awt.event.ComponentAdapter() {
             @Override
@@ -38,6 +37,7 @@ public class Login extends javax.swing.JFrame {
         centrarPanel();
     }
     
+    //Getter y Setters
     public swing.Button getBtnIngresar() {
         return btnIngresar;
     }
@@ -61,7 +61,8 @@ public class Login extends javax.swing.JFrame {
     public javax.swing.JLabel getPasswordVacioMessage() {
         return lblPasswordVacio;
     }
-
+    
+    //Metodo para centrar el panel
     private void centrarPanel() {
         int x = (background.getWidth() - jPanel1.getWidth()) / 2;
         int y = (background.getHeight() - jPanel1.getHeight()) / 2;

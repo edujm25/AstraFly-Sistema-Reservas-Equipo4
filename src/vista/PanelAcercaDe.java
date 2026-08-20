@@ -1,8 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
 package vista;
+
+import java.awt.Desktop;
+import java.net.URI;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -16,7 +16,73 @@ public class PanelAcercaDe extends javax.swing.JPanel {
     public PanelAcercaDe() {
         initComponents();
         sVGAstraFlyLogo.setSvgImage("vista/imagenes/SVGblueAstraFlyIcon.svg", 150, 100);
+        sVGGithubIcon.setSvgImage("vista/imagenes/SVGgithub-Icon.svg", 20, 20);
+        sVGGithubIcon1.setSvgImage("vista/imagenes/SVGgithub-Icon.svg", 20, 20);
+        sVGEmail.setSvgImage("vista/imagenes/email-svgrepo-com.svg", 20, 20);
+        sVGEmail1.setSvgImage("vista/imagenes/email-svgrepo-com.svg", 20, 20);
+        //sVGAstraFlyLogo.setSvgImage("vista/imagenes/SVGblueAstraFlyIcon.svg", 150, 100);
+        
+        lblGitHub.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
+        // JTextPane interpretara HTML
+        txtDescripcion.setContentType("text/html");
+
+        // Texto del apartado "Acerca de"
+        txtDescripcion.setText(
+            "<html>" +
+            "<body style=\"font-family: 'Segoe UI'; font-size: 12pt; font-weight: normal;\">"
+
+            + "<p style=\"text-align: left; margin-bottom: 4px;\">"
+            + "<b>Descripción</b>"
+            + "</p>"
+
+            + "<p style=\"text-align: justify; margin-top: 0px;\">"
+            + "AstraFly es una aplicación de escritorio desarrollada para "
+            + "facilitar la gestión administrativa de vuelos y reservas. "
+            + "El sistema permite centralizar y organizar la información, "
+            + "proporcionando herramientas para registrar, consultar, "
+            + "modificar y eliminar datos de manera sencilla y eficiente."
+            + "</p>"
+
+
+            + "<p style=\"text-align: left; margin-bottom: 4px;\">"
+            + "<b>Propósito</b>"
+            + "</p>"
+
+            + "<p style=\"text-align: justify; margin-top: 0px;\">"
+            + "El propósito de AstraFly es optimizar la administración de "
+            + "vuelos y reservas mediante una interfaz intuitiva que permita "
+            + "al personal autorizado acceder y gestionar la información "
+            + "desde un único sistema."
+            + "</p>"
+
+
+            + "<p style=\"text-align: left; margin-bottom: 4px;\">"
+            + "<b>Funcionalidades</b>"
+            + "</p>"
+
+            + "<p style=\"text-align: justify; margin-top: 0px;\">"
+            + "El sistema permite gestionar vuelos, reservas y usuarios, "
+            + "realizar búsquedas de información y administrar los registros "
+            + "almacenados en la base de datos."
+            + "</p>"
+
+
+            + "<p style=\"text-align: left; margin-bottom: 4px;\">"
+            + "<b>Seguridad y acceso</b>"
+            + "</p>"
+
+            + "<p style=\"text-align: justify; margin-top: 0px;\">"
+            + "AstraFly cuenta con un sistema de autenticación que restringe "
+            + "el acceso a las funcionalidades principales mediante "
+            + "credenciales almacenadas en la base de datos."
+            + "</p>"
+
+            + "</body>"
+            + "</html>"
+        );
+        
+        lblGitHub.setText("<html><b><u>Abrir repositorio Aquí</u></b></html>");
     }
 
     /**
@@ -30,46 +96,41 @@ public class PanelAcercaDe extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextPane1 = new javax.swing.JTextPane();
-        jLabel4 = new javax.swing.JLabel();
-        jTextPane2 = new javax.swing.JTextPane();
-        jLabel5 = new javax.swing.JLabel();
-        jSeparator1 = new javax.swing.JSeparator();
+        txtDescripcion = new javax.swing.JTextPane();
         jPanel1 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         sVGAstraFlyLogo = new swing.SVGImage();
+        jLabel9 = new javax.swing.JLabel();
+        sVGEmail = new swing.SVGImage();
+        lblGitHub = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        sVGGithubIcon1 = new swing.SVGImage();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        sVGGithubIcon = new swing.SVGImage();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        sVGEmail1 = new swing.SVGImage();
 
         setBackground(new java.awt.Color(230, 235, 243));
         setPreferredSize(new java.awt.Dimension(701, 547));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel1.setText("Sistemas de Reservsa de Vuelos ");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 0, 466, 46));
+        jLabel1.setText("Sistemas de Reservas de Vuelos ");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 466, 46));
 
         jLabel2.setText("Version 1.0.0");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 40, -1, -1));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, -1, -1));
 
-        jTextPane1.setEditable(false);
-        jTextPane1.setBackground(new java.awt.Color(230, 235, 243));
-        jTextPane1.setText("AstraFly centraliza la operacion diaria de una aerolinea: control de vuelos, gestion de usuarios y administracion de reservas, todo desde un solo panel de escritorio, disenado para reducir el trabajo manual y dar visibilidad completa del estado de cada vuelo en tiempo real.\n\n La plataforma permite registrar vuelos con su itinerario y estado, vincular reservas a usuarios con seguimiento de pago, y administrar las cuentas del personal autorizado, evitando duplicidad de informacion.");
-        add(jTextPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 70, 390, 140));
-
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel4.setText("Manual de Usuario");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 220, 130, 30));
-
-        jTextPane2.setBackground(new java.awt.Color(230, 235, 243));
-        jTextPane2.setText("1. Inicia sesion con tu usuario y contrasena.\n\n2. Utiliza el menu para gestionar vuelos, reservas o usuarios. \n\n3. Registra, busca, edita o elimina informacion segun necesites. \n\n4. Consulta la seccion Acerca de para mas informacion. ");
-        add(jTextPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 260, 360, -1));
-
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel5.setText("Creadores");
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 420, -1, -1));
-        add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 400, 450, 20));
+        txtDescripcion.setEditable(false);
+        txtDescripcion.setBackground(new java.awt.Color(230, 235, 243));
+        txtDescripcion.setText("...");
+        add(txtDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 370, 370));
 
         jPanel1.setBackground(new java.awt.Color(230, 235, 243));
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -77,7 +138,7 @@ public class PanelAcercaDe extends javax.swing.JPanel {
         jLabel7.setText("Edwis Jimenez Mercedes");
         jPanel1.add(jLabel7);
 
-        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 450, 150, 30));
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 480, 150, 30));
 
         jPanel2.setBackground(new java.awt.Color(230, 235, 243));
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -85,28 +146,94 @@ public class PanelAcercaDe extends javax.swing.JPanel {
         jLabel6.setText("Shing Roxber Cruz Carbajal ");
         jPanel2.add(jLabel6);
 
-        add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 450, 160, 30));
+        add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 480, 160, 30));
 
         jLabel8.setForeground(new java.awt.Color(100, 100, 100));
-        jLabel8.setText("Instituto Tecnologico de las Americas ");
-        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 500, 280, 20));
-        add(sVGAstraFlyLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 200, 160));
+        jLabel8.setText("Instituto Tecnologico de las Américas (ITLA) · 2026 ");
+        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 520, 310, 20));
+        add(sVGAstraFlyLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, -20, 200, 160));
+
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel9.setText("Desarrollado Por");
+        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 450, -1, -1));
+        add(sVGEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 370, 40, 40));
+
+        lblGitHub.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lblGitHub.setForeground(new java.awt.Color(0, 46, 201));
+        lblGitHub.setText("Abrir Repositorio Aquí");
+        lblGitHub.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblGitHubMouseClicked(evt);
+            }
+        });
+        add(lblGitHub, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 260, 140, 30));
+
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel5.setText("edujm25");
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 190, 50, 30));
+        add(sVGGithubIcon1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 230, 40, 30));
+
+        jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel11.setText("edwisjimenezm25@gmail.com");
+        add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 360, 170, 60));
+
+        jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel12.setText("Correos electronicos");
+        add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 330, 160, 30));
+
+        jLabel13.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel13.setText("Repositorio GitHub");
+        add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 150, 160, 30));
+        add(sVGGithubIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 190, 40, 30));
+
+        jLabel14.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel14.setText("Shing999");
+        add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 230, 60, 30));
+
+        jLabel15.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel15.setText("shing999c@gmail.com");
+        add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 390, 170, 60));
+        add(sVGEmail1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 400, 40, 40));
     }// </editor-fold>//GEN-END:initComponents
+
+    private void lblGitHubMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblGitHubMouseClicked
+       System.out.println("Hiciste click!");
+        try {
+            java.awt.Desktop.getDesktop().browse(
+                new java.net.URI("https://github.com/edujm25/AstraFly-Sistema-Reservas-Equipo4")
+            );
+        } catch (java.io.IOException | java.net.URISyntaxException e) {
+            javax.swing.JOptionPane.showMessageDialog(
+                this,
+                "No se pudo abrir el enlace.",
+                "Error",
+                javax.swing.JOptionPane.ERROR_MESSAGE
+            );
+        } 
+    }//GEN-LAST:event_lblGitHubMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTextPane jTextPane1;
-    private javax.swing.JTextPane jTextPane2;
+    private javax.swing.JLabel lblGitHub;
     private swing.SVGImage sVGAstraFlyLogo;
+    private swing.SVGImage sVGEmail;
+    private swing.SVGImage sVGEmail1;
+    private swing.SVGImage sVGGithubIcon;
+    private swing.SVGImage sVGGithubIcon1;
+    private javax.swing.JTextPane txtDescripcion;
     // End of variables declaration//GEN-END:variables
 }

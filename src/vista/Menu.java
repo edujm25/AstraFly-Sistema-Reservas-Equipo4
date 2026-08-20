@@ -1,5 +1,7 @@
 package vista;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Edwis Jimenez
@@ -12,19 +14,21 @@ public class Menu extends javax.swing.JFrame {
      * Creates new form Menu
      */
     public Menu() {
-        //Se inicializan los componentes
+        // Se inicializan los componentes
         initComponents();
+        inicio.setImage("/vista/imagenes/AdminAFMenuImage.png");//se le asigna una imagen al menu de inicio
         setIconImage(new javax.swing.ImageIcon(getClass().getResource("/vista/imagenes/AFAppIcon.png")).getImage());
         setTitle("AstraFly 1.0.0");
         
-        //Se agregan los diferentes frames del programa 
+        // Se agregan los diferentes frames del programa al cardLayout
         contentPanel.add(new vista.PanelesAdmin.PanelReservasAdmin(), "Administrar Reservas");
         contentPanel.add(new vista.PanelesAdmin.PanelUsuariosAdmin(), "Administrar Usuarios");
         contentPanel.add(new vista.PanelesAdmin.PanelVuelosAdmin(), "Administrar Vuelos");
         contentPanel.add(new vista.PanelAcercaDe(), "Acerca De");
         
         java.awt.CardLayout cardLayout = (java.awt.CardLayout) contentPanel.getLayout();
- 
+        
+        // Listener que espera click en el icono de vuelos y abre su layout correspondiente
         sVGVuelos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         sVGVuelos.addMouseListener(new java.awt.event.MouseAdapter() {
             @Override
@@ -38,6 +42,8 @@ public class Menu extends javax.swing.JFrame {
                 selectFrAcercaDe.setVisible(false);
             }
         });
+        
+        // Listener que espera click en el label de vuelos y abre su layout correspondiente
         lblVuelos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lblVuelos.addMouseListener(new java.awt.event.MouseAdapter() {
             @Override
@@ -51,7 +57,8 @@ public class Menu extends javax.swing.JFrame {
                 selectFrAcercaDe.setVisible(false);
             }
         });
- 
+        
+        // Listener que espera click en el icono de reservas y abre su layout correspondiente
         sVGReservasEdit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         sVGReservasEdit.addMouseListener(new java.awt.event.MouseAdapter() {
             @Override
@@ -65,6 +72,8 @@ public class Menu extends javax.swing.JFrame {
                 selectFrAcercaDe.setVisible(false);
             }
         });
+        
+        // Listener que espera click en el label de vuelos y abre su layout correspondiente
         lblReservas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lblReservas.addMouseListener(new java.awt.event.MouseAdapter() {
             @Override
@@ -78,7 +87,8 @@ public class Menu extends javax.swing.JFrame {
                 selectFrAcercaDe.setVisible(false);
             }
         });
- 
+        
+        // Listener que espera click en el icono de usuarios y abre su layout correspondiente
         sVGUsuarios.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         sVGUsuarios.addMouseListener(new java.awt.event.MouseAdapter() {
             @Override
@@ -92,6 +102,8 @@ public class Menu extends javax.swing.JFrame {
                 selectFrAcercaDe.setVisible(false);
             }
         });
+        
+        // Listener que espera click en el label de usuarios y abre su layout correspondiente
         lblUsuarios.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lblUsuarios.addMouseListener(new java.awt.event.MouseAdapter() {
             @Override
@@ -106,6 +118,7 @@ public class Menu extends javax.swing.JFrame {
             }
         });
  
+        // Listener que espera click en el icono de acerca de y abre su layout correspondiente
         sVGAcercaDe.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         sVGAcercaDe.addMouseListener(new java.awt.event.MouseAdapter() {
             @Override
@@ -119,6 +132,8 @@ public class Menu extends javax.swing.JFrame {
                 selectFrAcercaDe.setVisible(true);
             }
         });
+        
+        // Listener que espera click en el label de acerca de y abre su layout correspondiente
         lblAcercaDe.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lblAcercaDe.addMouseListener(new java.awt.event.MouseAdapter() {
             @Override
@@ -132,22 +147,30 @@ public class Menu extends javax.swing.JFrame {
                 selectFrAcercaDe.setVisible(true);
             }
         });
- 
+        
+        // Listener que espera click en el icono de salir y abre su layout correspondiente
         sVGSalir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         sVGSalir.addMouseListener(new java.awt.event.MouseAdapter() {
             @Override
             public void mouseClicked(java.awt.event.MouseEvent e) {
-                System.exit(0);
+                if (JOptionPane.showConfirmDialog(Menu.this, "¿Está seguro que desea cerrar AstraFly?", "Cerrar", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+                    System.exit(0);
+                }
             }
         });
+        
+        // Listener que espera click en el label de salir y abre su layout correspondiente
         lblSalir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lblSalir.addMouseListener(new java.awt.event.MouseAdapter() {
             @Override
             public void mouseClicked(java.awt.event.MouseEvent e) {
-                System.exit(0);
+                if (JOptionPane.showConfirmDialog(Menu.this, "¿Está seguro que desea cerrar AstraFly?", "Cerrar", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+                    System.exit(0);
+                }
             }
         });
- 
+        
+        // Listener que espera click en el recuadro de vuelos en el inicio y abre su layout correspondiente
         vuelosPanel3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         vuelosPanel3.addMouseListener(new java.awt.event.MouseAdapter() {
             @Override
@@ -161,6 +184,8 @@ public class Menu extends javax.swing.JFrame {
                 selectFrAcercaDe.setVisible(false);
             }
         });
+        
+        // Listener que espera click en el recuadro de reservas en el inicio y abre su layout correspondiente
         reservasPanel3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         reservasPanel3.addMouseListener(new java.awt.event.MouseAdapter() {
             @Override
@@ -174,6 +199,8 @@ public class Menu extends javax.swing.JFrame {
                 selectFrAcercaDe.setVisible(false);
             }
         });
+        
+        // Listener que espera click en el recuadro de usuarios en el inicio y abre su layout correspondiente
         usuariosPanel5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         usuariosPanel5.addMouseListener(new java.awt.event.MouseAdapter() {
             @Override
@@ -188,10 +215,7 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
-        
-        inicio.setImage("/vista/imagenes/AdminAFMenuImage.png");//se le asigna una imagen al menu de inicio
-        
-        //Botones cuadrados del menu de inicio
+        //Blut a recuadros del menu de inicio
         inicio.setBlur(vuelosPanel3);
         inicio.setBlur(reservasPanel3);
         inicio.setBlur(usuariosPanel5);

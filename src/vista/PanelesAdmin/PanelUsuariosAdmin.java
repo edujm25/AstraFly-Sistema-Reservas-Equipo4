@@ -27,11 +27,11 @@ public class PanelUsuariosAdmin extends javax.swing.JPanel {
     public PanelUsuariosAdmin() {
         initComponents();
         
-        //Asignar imagenes a los iconos svg
+        // Asignar imagenes a los iconos svg
         sVGEditar.setSvgImage("vista/imagenes/pen-svgrepo-com.svg", 14, 14);
         sVGEliminar.setSvgImage("vista/imagenes/delete-filled-svgrepo-com.svg", 14, 14);
         
-        //configuracion de elementos
+        // Configuracion de elementos
         btnBuscar.setArc(10);
         
         btnNuevo.setArc(10);
@@ -44,6 +44,7 @@ public class PanelUsuariosAdmin extends javax.swing.JPanel {
        new ControlUser(this);
     }
     
+    //Getters y Setters
     public JTable getTblUsuarios() {
         return tblUsuarios;
     }

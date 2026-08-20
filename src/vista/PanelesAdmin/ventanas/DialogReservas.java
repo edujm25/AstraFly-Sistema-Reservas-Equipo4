@@ -19,21 +19,23 @@ public class DialogReservas extends javax.swing.JDialog {
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(DialogReservas.class.getName());
 
     /**
-     * Creates new form DialogVuelo
+     * Creates new form DialogVuelo.
      */
     public DialogReservas(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         
+        //Asignar tamaño y color a los botones de la vista
         btnGuardar.setArc(10);
         btnGuardar.setBackground(new Color(7, 122, 61, 255));
         
         btnCancelar.setArc(10);
         btnCancelar.setBackground(new Color(204, 65, 56, 255));
         
-        this.setLocationRelativeTo(parent);
-        this.setTitle("Editar Reserva");
+        this.setLocationRelativeTo(parent);// Ubicacion central al padre de la vista
+        this.setTitle("Editar Reserva");// Titulo de la ventana
         
+        // Evitar la edicion de los siguientes datos
         txtId.setEnabled(false);
         txtUsuarioId.setEnabled(false);
         txtVueloId.setEnabled(false);
@@ -43,11 +45,12 @@ public class DialogReservas extends javax.swing.JDialog {
         txtPrecio.setEnabled(false);
         
         
-        
+        // Listener que espera que se dispare al clickear los botones
         btnGuardar.addActionListener(e -> onGuardar());
         btnCancelar.addActionListener(e -> onCancelar());
     }
     
+    // Mostrar los datos en cada uno de los text box
     public void setReserva(Reservas r) {
         this.reservaOriginal = r;
         txtId.setText(String.valueOf(r.getId()));
@@ -60,13 +63,16 @@ public class DialogReservas extends javax.swing.JDialog {
         cbEstado.setSelectedItem(r.getEstado());
     }
     
+    // Devuelve la variable guardado para veficar si esta guardado o no
     public boolean isGuardado() { return guardado; }
     
+    // Devuelve la reserva con el estado asignado
     public Reservas getReserva() {
         reservaOriginal.setEstado((String) cbEstado.getSelectedItem());
         return reservaOriginal;
     }
     
+    // Eventos al clickear los botones guardar
     private void onGuardar() { guardado = true; dispose(); }
     private void onCancelar() { guardado = false; dispose(); }
 

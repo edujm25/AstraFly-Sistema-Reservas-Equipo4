@@ -213,7 +213,8 @@ public class UserDAO {
             return 0;
         }
     }
-
+    
+    // Busca y elimina en la base de datos con el id indicado
     public int eliminar(int id) {
         String sql = "DELETE FROM usuarios WHERE id = ?";
 
@@ -227,7 +228,8 @@ public class UserDAO {
             return 0;
         }
     }
-
+    // Convierte la fila actual del ResultSet en un objeto User.
+    
     private User mapearUsuario(ResultSet rs) throws SQLException {
         User u = new User();
         u.setId(rs.getInt("id"));

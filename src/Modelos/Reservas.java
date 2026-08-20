@@ -9,6 +9,7 @@ import java.time.LocalDateTime;
  */
 public class Reservas {
     
+    // Atributos
     private int id;
     private int idUsuario;
     private int idVuelo;
@@ -18,6 +19,7 @@ public class Reservas {
     private LocalDateTime fechaReserva;
     private BigDecimal precioPagado;
     
+    //Constructores
     public Reservas() {
     }
     
